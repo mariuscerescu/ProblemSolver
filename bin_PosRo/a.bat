@@ -1,0 +1,1 @@
+gcc ino.c

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POS_Output>
+  <S id="1" offset="0">
+    <W LEMMA="la" MSD="Sp" POS="ADPOSITION" id="1.1" offset="0">La</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="mare" MSD="Afpfsrn" Number="singular" POS="ADJECTIVE" id="1.2" offset="3">mare</W>
+    <W LEMMA="," MSD="COMMA" id="1.3" offset="7">,</W>
+    <W LEMMA="mihaela" MSD="Np" POS="NOUN" Type="proper" id="1.4" offset="9">Mihaela</W>
+    <W LEMMA="avea" MSD="Vaip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="auxiliary" id="1.5" offset="17">a</W>
+    <W EXTRA="tranzitiv" LEMMA="aduna" MSD="Vmp" Mood="participle" POS="VERB" Type="predicative" id="1.6" offset="19">adunat</W>
+    <W EXTRA="NotInDict" LEMMA="30" MSD="M" POS="NUMERAL" id="1.7" offset="26">30</W>
+    <W LEMMA="de" MSD="Sp" POS="ADPOSITION" id="1.8" offset="29">de</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="scoică" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="1.9" offset="32">scoici</W>
+    <W LEMMA="și" MSD="Cc" POS="CONJUNCTION" Type="coordinating" id="1.10" offset="39">și</W>
+    <W EXTRA="NotInDict" LEMMA="5" MSD="M" POS="NUMERAL" id="1.11" offset="42">5</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="pietricea" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="1.12" offset="44">pietricele</W>
+    <W LEMMA="." MSD="PERIOD" id="1.13" offset="54">.</W>
+  </S>
+  <S id="2" offset="56">
+    <W LEMMA="câte" MSD="Rg" POS="ADVERB" id="2.1" offset="0">Câte</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="obiect" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="2.2" offset="5">obiecte</W>
+    <W EXTRA="tranzitiv" LEMMA="forma" MSD="Vmip3p" Mood="indicative" Number="plural" POS="VERB" Person="third" Tense="present" Type="predicative" id="2.3" offset="13">formează</W>
+    <W Case="direct" Definiteness="yes" Gender="feminine" LEMMA="colecție" MSD="Ncfsry" Number="singular" POS="NOUN" Type="common" id="2.4" offset="22">colecția</W>
+    <W Case="oblique" Definiteness="yes" Gender="feminine" LEMMA="mihaela" MSD="Npfsoy" Number="singular" POS="NOUN" Type="proper" id="2.5" offset="31">Mihaelei</W>
+    <W LEMMA="?" MSD="QUEST" id="2.6" offset="39">?</W>
+  </S>
+</POS_Output>
