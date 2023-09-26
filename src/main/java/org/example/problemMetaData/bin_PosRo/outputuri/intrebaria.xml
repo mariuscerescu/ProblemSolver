@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<POS_Output>
+  <S id="1" offset="0">
+    <W LEMMA="total" MSD="Rg" POS="ADVERB" id="1.1" offset="0">total</W>
+  </S>
+</POS_Output>

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -8,22 +8,21 @@ import java.util.ArrayList;
 
 public class QuestionFinder {
 
-    private final Path questionWordsPath = Paths.get("QuestionWords.txt");
-    private final Path actionWordsPath = Paths.get("ActionWords.txt");
+    private static final ArrayList<String> questionWordsList = new ArrayList<>();
+    private static final ArrayList<String> actionWordsList = new ArrayList<>();
 
-    private final ArrayList<String> questionWordsList = new ArrayList<>();
-    private final ArrayList<String> actionWordsList = new ArrayList<>();
-
-    public QuestionFinder(){
+    static{
         try {
+            Path questionWordsPath = Paths.get("src/main/java/org/example/files/QuestionWords.txt");
             questionWordsList.addAll(Files.readAllLines(questionWordsPath));
+            Path actionWordsPath = Paths.get("src/main/java/org/example/files/ActionWords.txt");
             actionWordsList.addAll(Files.readAllLines(actionWordsPath));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public String getQuestion(String problem){
+    public static String getQuestion(String problem){
 
         String question;
 
@@ -158,9 +157,6 @@ public class QuestionFinder {
         QuestionFinder qfinder = new QuestionFinder();
 
         System.out.println(qfinder.getQuestion("Weng câștigă 12, cât a câștigat dolari pe oră ca babysitter. Ieri, ea a făcut doar 50 de minute de babysitting. Cât a câștigat"));
-
-        Stemmer stemmer = new Stemmer();
-
 
 
     }

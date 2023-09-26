@@ -1,5 +1,8 @@
 package org.example;
 
+import org.example.utils.PhraseSplitter;
+import org.example.utils.QuestionFinder;
+
 import java.util.ArrayList;
 
 public class Main {

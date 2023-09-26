@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 import org.tartarus.snowball.ext.RomanianStemmer;
 
 public class Stemmer {

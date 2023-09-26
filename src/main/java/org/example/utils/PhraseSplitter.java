@@ -1,4 +1,4 @@
-package org.example;
+package org.example.utils;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,7 +14,7 @@ public class PhraseSplitter {
         ArrayList<String> sentences = new ArrayList<>();
 
         //Getting the Junction Points
-        Path junctionPointsPath = Paths.get("junctionPoints.txt");
+        Path junctionPointsPath = Paths.get("src/main/java/org/example/files/junctionPoints.txt");
         List<String> junctionPointsList;
         try {
             junctionPointsList = Files.readAllLines(junctionPointsPath);
@@ -101,9 +101,12 @@ public class PhraseSplitter {
 
     }
 
-    public static void main(String[] args) {
-        getData("Daisy este o cățelușă pudel care adoră să se joace cu jucăriile ei. Deseori le pierde în diverse moduri, iar stăpânul ei trebuie să le înlocuiască. Luni, Daisy s-a jucat cu 5 jucării pentru câini. Marți, Daisy a rămas cu 3 jucării pentru câini după ce a pierdut câteva, iar stăpânul ei s-a dus la magazin și i-a mai luat 3 jucării. Miercuri, toate jucăriile vechi și noi ale lui Daisy lipseau, așa că stăpânul ei s-a dus la magazin și i-a mai cumpărat 5 jucării. Dacă stăpânul lui Daisy ar fi găsit toate jucăriile pierdute, inclusiv cele noi, câte jucării de câine ar avea acum Daisy?");
-    }
+//    public static void main(String[] args) {
+//        ArrayList<String> sentences =  getData("Daisy este o cățelușă pudel care adoră să se joace cu jucăriile ei. Deseori le pierde în diverse moduri, iar stăpânul ei trebuie să le înlocuiască. Luni, Daisy s-a jucat cu 5 jucării pentru câini. Marți, Daisy a rămas cu 3 jucării pentru câini după ce a pierdut câteva, iar stăpânul ei s-a dus la magazin și i-a mai luat 3 jucării. Miercuri, toate jucăriile vechi și noi ale lui Daisy lipseau, așa că stăpânul ei s-a dus la magazin și i-a mai cumpărat 5 jucării. Dacă stăpânul lui Daisy ar fi găsit toate jucăriile pierdute, inclusiv cele noi, câte jucării de câine ar avea acum Daisy?");
+//        for(String sentence : sentences){
+//            System.out.println(sentence);
+//        }
+//    }
 
 }
 //Betty economisește bani pentru un portofel nou care costă 100 de dolari. Betty are doar jumătate din banii de care are nevoie. Părinții ei au decis să-i dea 15 dolari în acest scop, iar bunicii ei de două ori mai mult decât părinții ei. De câți bani mai are nevoie Betty pentru a cumpăra portofelul?

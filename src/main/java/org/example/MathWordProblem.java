@@ -3,13 +3,13 @@ package org.example;
 import java.util.*;
 import java.util.regex.*;
 
-public class MathWordProblemSolver {
+public class MathWordProblem{
 
     // Structura pentru a stoca informațiile despre problemele matematice
     static class MathProblem {
-        String problemText;
-        List<String> numbers;
-        List<String> operations;
+      String problemText;
+      List<String> numbers;
+      List<String> operations;
 
         // Constructor
         public MathProblem(String problemText) {
