@@ -10,9 +10,13 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
 
-        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis("Maria are 5 mere roșii și 3 mere verzi.");
+        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis("M-am gândit la un număr. Am împărțit sfertul lui în jumătate, apoi am triplat numărul obținut. Am mărit rezultatul cu 2 și am obținut 8. La ce număr m-am gândit?");
 
+        ArrayList<ArrayList<String>> tokensPerSentence = mathWordProblem.getTokensPerSentence();
 
+        for(String token : tokensPerSentence.get(2)){
+            System.out.println(token);
+        }
 
     }
 }

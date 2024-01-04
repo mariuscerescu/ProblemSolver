@@ -10,28 +10,32 @@ import java.util.Arrays;
 
 public class Rules {
 
-    public ArrayList<String> sentences;
-    public ArrayList<ArrayList<String>> tokens = new ArrayList<>();
+    private ArrayList<String> sentences;
+    private ArrayList<ArrayList<String>> tokensPerSentence;
+    private ArrayList<ArrayList<String>> msdPerSentence;
 
     private MathWordProblem mathWordProblem;
 
     public Rules(MathWordProblem mathWordProblem){
+        this.mathWordProblem = mathWordProblem;
         PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(mathWordProblem);
         this.sentences = splitter.getSentences();
         for(String s: sentences){
             System.out.println(s);
         }
-        setTokens();
+        setTokensAndMSDPerSentence();
     }
 
-    private void setTokens(){
-        Tokenizer tokenizer = new Tokenizer();
-
+    public void setTokensAndMSDPerSentence(){
+        StringBuilder builder = new StringBuilder();
         for(String sentence : sentences){
-            tokens.add(tokenizer.getTokens(sentence));
+            builder.append(sentence).append(" ");
         }
-
+        MathWordProblem analyzedSentences = BinPosRoRunner.runTextAnalysis(builder.toString());
+        tokensPerSentence = analyzedSentences.getTokensPerSentence();
+        msdPerSentence = analyzedSentences.getMSDPerSentence();
     }
+
 
     //Dacă între două numere din aceeași propoziție se află „și” acele două numere trebuie adunate
     public String rule1(){
@@ -41,7 +45,7 @@ public class Rules {
 
         int firstNr = 0, secondNr;
 
-        for (ArrayList<String> sentence : tokens) {
+        for (ArrayList<String> sentence : tokensPerSentence) {
 
             firstNrFound = false;
 
@@ -72,7 +76,7 @@ public class Rules {
 
     public static void main(String[] args) {
 
-        String sentence = "Un ceasornicar a reparat 9 ceasuri? Trebuie să repare încă 15 ceasuri de mână și 7 ceasuri de perete. Câte comenzi de reparație? avea ceasornicarul?";
+        String sentence = "M-am gândit la un număr. Am împărțit sfertul lui în jumătate,  am triplat numărul obținut. Am mărit rezultatul cu 2 și am obținut 8. La ce număr m-am gândit?";
 
         Rules rules = new Rules(BinPosRoRunner.runTextAnalysis(sentence));
 
