@@ -10,7 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        String originalProblem = "total";
+        String originalProblem = "adaugă, adăugați, adăugare";
         String lowerCaseProblem = originalProblem.toLowerCase();
         String processedProblem = removePunctuation(lowerCaseProblem);
 

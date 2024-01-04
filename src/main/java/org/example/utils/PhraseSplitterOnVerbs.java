@@ -1,13 +1,19 @@
 package org.example.utils;
 
+import org.example.problemMetaData.BinPosRoRunner;
+import org.example.problemMetaData.MathWordProblem;
+import org.example.problemMetaData.Sentence;
+import org.example.problemMetaData.Word;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-public class PhraseSplitter {
+public class PhraseSplitterOnVerbs {
 
     public ArrayList<String> getData(String problem) {
 
@@ -29,9 +35,22 @@ public class PhraseSplitter {
             problem = problem.replace(question, "");
         }
 
+
+        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis(problem);
+        List<Sentence> problemSentences = mathWordProblem.getSentences();
+
         //Tokenization
-        Tokenizer tokenizer = new Tokenizer();
-        ArrayList<String> tokens = tokenizer.getTokens(problem);
+        //POS Tags extraction
+        List<String> posTags = new ArrayList<>();
+        List<String> tokens = new ArrayList<>();
+
+        for(Sentence s : problemSentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                posTags.add(w.getPos());
+                tokens.add(w.getContent());
+            }
+        }
 
         ArrayList<Integer> tokenIndices = new ArrayList<>();
 
@@ -49,13 +68,15 @@ public class PhraseSplitter {
         int startIndex = 0;
         int endIndex = problem.length();
         int lastEndIndex = 0;
-        int nrOfTokens = 0;
+        boolean verbWasPresent = false;
 
         for(int i = 0; i < tokens.size(); i++){
 
-            nrOfTokens++;
+            if(posTags.get(i) != null && posTags.get(i).equals("VERB")){
+                verbWasPresent = true;
+            }
 
-            if(tokens.get(i).equals(".") || tokens.get(i).equals("!") || (tokens.get(i).equals(",") && nrOfTokens > 7) || i == tokens.size() - 1){
+            if(tokens.get(i).equals(".") || tokens.get(i).equals("!") || (tokens.get(i).equals(",") && verbWasPresent) || i == tokens.size() - 1){
 
                 endIndex = tokenIndices.get(i);
 
@@ -65,7 +86,7 @@ public class PhraseSplitter {
 
                 String subString = problem.substring(startIndex, endIndex);
 
-                if(nrOfTokens > 7 || sentences.size() == 0 || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!")){
+                if(verbWasPresent || sentences.size() == 0 || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!")){
                     sentences.add(subString);
                 }else{
                         String lastSent = sentences.get(sentences.size() - 1);
@@ -74,7 +95,7 @@ public class PhraseSplitter {
                 }
 
                 lastEndIndex = i;
-                nrOfTokens = 0;
+                verbWasPresent = false;
 
                 //Setting the startIndex after the junctionPoint
                 if (i + 1 < tokens.size()) {
@@ -85,7 +106,16 @@ public class PhraseSplitter {
                     for (String junctionPoint : junctionPointsList) {
                         String junctionPointLower = junctionPoint.toLowerCase();
                         if (subStringToCheckJunctionPoint.startsWith(junctionPointLower)) {
-                            foundJunctionPointWords = tokenizer.getTokens(junctionPoint).toArray(new String[0]);
+                            MathWordProblem jp = BinPosRoRunner.runTextAnalysis(junctionPoint);
+                            List<Sentence> jpSentences = jp.getSentences();
+                            List<String> jpTokens = new ArrayList<>();
+                            for(Sentence s : jpSentences){
+                                List<Word> words = s.getWords();
+                                for(Word w : words){
+                                    jpTokens.add(w.getContent());
+                                }
+                            }
+                            foundJunctionPointWords = jpTokens.toArray(new String[0]);
                             nextWordIsJunctionPoint = true;
                             break;
                         }
@@ -119,7 +149,7 @@ public class PhraseSplitter {
     }
 
     public static void main(String[] args) {
-        PhraseSplitter phraseSplitter = new PhraseSplitter();
+        PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs();
         ArrayList<String> sentences = phraseSplitter.getData("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?");
         for(String sentence : sentences){
             System.out.println(sentence);

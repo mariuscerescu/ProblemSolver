@@ -35,4 +35,12 @@ public class Tokenizer {
 
     }
 
+    public static void main(String[] args) {
+        Tokenizer tokenizer = new Tokenizer();
+
+        ArrayList<String> tokens = tokenizer.getTokens("Ion a alcătuit un ierbar din 97 de plante: 90 din Codrii Orheiului, iar restul din Stepa Bugeacului. Câte plante de stepă sunt în ierbar?");
+
+        System.out.println(Arrays.toString(tokens.toArray()));
+    }
+
 }

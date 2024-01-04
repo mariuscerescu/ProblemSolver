@@ -5,11 +5,11 @@ import java.util.regex.*;
 
 public class MathWordProblem{
 
-    // Structura pentru a stoca informațiile despre problemele matematice
+    // Structure to store information about math problems
     static class MathProblem {
-      String problemText;
-      List<String> numbers;
-      List<String> operations;
+        String problemText;
+        List<String> numbers;
+        List<String> operations;
 
         // Constructor
         public MathProblem(String problemText) {
@@ -18,7 +18,7 @@ public class MathWordProblem{
             this.operations = extractOperations(problemText);
         }
 
-        // Funcție pentru extragerea numerelor din text
+        // Function to extract numbers from text
         private List<String> extractNumbers(String text) {
             List<String> numbers = new ArrayList<>();
             Pattern pattern = Pattern.compile("\\d+");
@@ -29,23 +29,29 @@ public class MathWordProblem{
             return numbers;
         }
 
-        // Funcție pentru extragerea operațiilor din text
+        // Function to extract operations from text
         private List<String> extractOperations(String text) {
             List<String> operations = new ArrayList<>();
-            if (text.contains("plus") || text.contains("adaugă")) {
+            if (text.toLowerCase().contains("plus") || text.toLowerCase().contains("adaugă")) {
                 operations.add("plus");
             }
-            // Adăugați aici alte cuvinte cheie pentru operații
+            if (text.toLowerCase().contains("minus") || text.toLowerCase().contains("scade")) {
+                operations.add("minus");
+            }
+            if (text.toLowerCase().contains("înmulțește")) {
+                operations.add("înmulțește");
+            }
+            if (text.toLowerCase().contains("împarte")) {
+                operations.add("împarte");
+            }
             return operations;
         }
     }
 
-    // Enum pentru tipurile de operații
     enum OperationType {
         ADDITION, SUBTRACTION, MULTIPLICATION, DIVISION, UNKNOWN
     }
 
-    // Funcție pentru determinarea tipului de operație pe baza cuvintelor cheie
     private static OperationType determineOperationType(String operation) {
         return switch (operation.toLowerCase()) {
             case "plus", "adaugă" -> OperationType.ADDITION;
@@ -56,11 +62,10 @@ public class MathWordProblem{
         };
     }
 
-    // Funcție pentru rezolvarea problemei matematice
     public static int solveMathProblem(MathProblem problem) {
         int result = 0;
         if (problem.numbers.size() < 2) {
-            System.out.println("Nu sunt suficiente numere pentru a efectua o operație.");
+            System.out.println("Not enough numbers to perform an operation.");
             return result;
         }
 
@@ -68,7 +73,7 @@ public class MathWordProblem{
         int num2 = Integer.parseInt(problem.numbers.get(1));
 
         if (problem.operations.size() == 0) {
-            System.out.println("Nu a fost detectată nicio operație.");
+            System.out.println("No operation detected.");
             return result;
         }
 
@@ -82,28 +87,26 @@ public class MathWordProblem{
                 if (num2 != 0) {
                     result = num1 / num2;
                 } else {
-                    System.out.println("Împărțire la zero!");
+                    System.out.println("Division by zero!");
                 }
             }
-            default -> System.out.println("Operație necunoscută.");
+            default -> System.out.println("Unknown operation.");
         }
 
         return result;
     }
 
-    // Funcție pentru determinarea subiectului problemei
     private static String determineSubject(String text) {
-        return text.split(" ")[0];
+        return text.split(" ")[3]; // Assuming subject is the fourth word in the sentence
     }
 
-    // Funcție pentru afișarea problemei rezolvate
     public static void displaySolvedProblem(MathProblem problem, int result) {
         String subject = determineSubject(problem.problemText);
-        System.out.println(result);
+        System.out.println("The result for '" + subject + "' is: " + result);
     }
 
     public static void main(String[] args) {
-        MathProblem problem = new MathProblem("La mare, Mihaela adaugă 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?");
+        MathProblem problem = new MathProblem("Ion a alcătuit un ierbar din 97 de plante: 90 din Codrii Orheiului, iar restul din Stepa Bugeacului. Câte plante de stepă sunt în ierbar?");
         int result = solveMathProblem(problem);
         displaySolvedProblem(problem, result);
     }

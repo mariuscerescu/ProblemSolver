@@ -30,9 +30,28 @@ public class CategoryClassification {
         }
 
         //Combination Classification
-//        for(String token : tokens){
-//            if(isWordPresent(tokens, ""))
-//        }
+        for(String token : tokens){
+            if(isWordPresent(tokens, "tot") ||
+               isWordPresent(tokens, "total") ||
+               isWordPresent(tokens, "împreună") ||
+               isWordPresent(tokens, "ansamblu")
+            ){
+                return "combine";
+            }
+        }
+
+        //Change Classification
+        for(String token : tokens){
+            if(isWordPresent(tokens, "acum") ||
+               isWordPresent(tokens, "mâncat") ||
+               isWordPresent(tokens, "sumă") ||
+               isWordPresent(tokens, "suma") ||
+               isWordPresent(tokens, "")
+
+            ){
+                return "change";
+            }
+        }
 
         return "Classification not found";
     }

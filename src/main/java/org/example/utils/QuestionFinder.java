@@ -156,7 +156,7 @@ public class QuestionFinder {
     public static void main(String[] args) {
         QuestionFinder qfinder = new QuestionFinder();
 
-        System.out.println(qfinder.getQuestion("Weng câștigă 12, cât a câștigat dolari pe oră ca babysitter. Ieri, ea a făcut doar 50 de minute de babysitting. Cât a câștigat"));
+        System.out.println(qfinder.getQuestion("Brandon a vândut 86 de geckos anul trecut. A vândut de două ori mai multe în anul precedent. Câte geckos a vândut Brandon în ultimii doi ani?"));
 
 
     }
