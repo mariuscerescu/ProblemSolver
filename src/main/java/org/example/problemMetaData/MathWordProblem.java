@@ -39,6 +39,18 @@ public class MathWordProblem {
         return tokens;
     }
 
+    public List<String> getAllPOSTags(){
+        List<String> posTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                posTags.add(w.getPos());
+            }
+        }
+
+        return posTags;
+    }
+
     // Utility method to get all sentences as a list of strings
     public List<String> getAllSentences() {
         List<String> allSentences = new ArrayList<>();

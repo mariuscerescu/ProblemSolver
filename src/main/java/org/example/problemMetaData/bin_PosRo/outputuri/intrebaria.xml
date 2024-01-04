@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <POS_Output>
   <S id="1" offset="0">
-    <W EXTRA="tranzitiv" LEMMA="adăuga" MSD="Vmip3p" Mood="indicative" Number="plural" POS="VERB" Person="third" Tense="present" Type="predicative" id="1.1" offset="0">adaugă</W>
-    <W EXTRA="tranzitiv" LEMMA="adăuga" MSD="Vmip2p" Mood="indicative" Number="plural" POS="VERB" Person="second" Tense="present" Type="predicative" id="1.2" offset="7">adăugați</W>
-    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="adăugare" MSD="Ncfsrn" Number="singular" POS="NOUN" Type="common" id="1.3" offset="16">adăugare</W>
+    <W LEMMA="dacă" MSD="Cs" POS="CONJUNCTION" id="1.1" offset="0">dacă</W>
   </S>
 </POS_Output>

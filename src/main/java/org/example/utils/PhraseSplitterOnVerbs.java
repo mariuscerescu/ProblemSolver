@@ -4,6 +4,7 @@ import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.MathWordProblem;
 import org.example.problemMetaData.Sentence;
 import org.example.problemMetaData.Word;
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class PhraseSplitterOnVerbs {
 
-    public ArrayList<String> getData(String problem) {
+    public ArrayList<String> getSentences(String problem) {
 
         ArrayList<String> sentences = new ArrayList<>();
 
@@ -29,41 +30,20 @@ public class PhraseSplitterOnVerbs {
         }
 
         //Removing the sentence
-        String question = QuestionFinder.getQuestion(problem);
-
-        if(question != null){
-            problem = problem.replace(question, "");
-        }
-
-
+//        String question = QuestionFinder.getQuestion(problem);
+//
+//        if(question != null){
+//            problem = problem.replace(question, "");
+//        }
+        
         MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis(problem);
-        List<Sentence> problemSentences = mathWordProblem.getSentences();
 
         //Tokenization
         //POS Tags extraction
-        List<String> posTags = new ArrayList<>();
-        List<String> tokens = new ArrayList<>();
+        List<String> posTags = mathWordProblem.getAllPOSTags();
+        List<String> tokens = mathWordProblem.getAllTokens();
 
-        for(Sentence s : problemSentences){
-            List<Word> words = s.getWords();
-            for(Word w : words){
-                posTags.add(w.getPos());
-                tokens.add(w.getContent());
-            }
-        }
-
-        ArrayList<Integer> tokenIndices = new ArrayList<>();
-
-        StringBuilder tempProblem = new StringBuilder();
-        tempProblem.append(problem);
-        StringBuilder replacement = new StringBuilder();
-
-        for(String token : tokens){
-            tokenIndices.add(tempProblem.indexOf(token));
-            replacement.setLength(0);
-            replacement.append("~".repeat(token.length()));
-            tempProblem.replace(tempProblem.indexOf(token), tempProblem.indexOf(token) + token.length(), replacement.toString());
-        }
+        ArrayList<Integer> tokenIndices = getTokenIndices(problem, tokens);
 
         int startIndex = 0;
         int endIndex = problem.length();
@@ -148,9 +128,26 @@ public class PhraseSplitterOnVerbs {
 
     }
 
+    @NotNull
+    private static ArrayList<Integer> getTokenIndices(String problem, List<String> tokens) {
+        ArrayList<Integer> tokenIndices = new ArrayList<>();
+
+        StringBuilder tempProblem = new StringBuilder();
+        tempProblem.append(problem);
+        StringBuilder replacement = new StringBuilder();
+
+        for(String token : tokens){
+            tokenIndices.add(tempProblem.indexOf(token));
+            replacement.setLength(0);
+            replacement.append("~".repeat(token.length()));
+            tempProblem.replace(tempProblem.indexOf(token), tempProblem.indexOf(token) + token.length(), replacement.toString());
+        }
+        return tokenIndices;
+    }
+
     public static void main(String[] args) {
         PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs();
-        ArrayList<String> sentences = phraseSplitter.getData("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?");
+        ArrayList<String> sentences = phraseSplitter.getSentences("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?");
         for(String sentence : sentences){
             System.out.println(sentence);
         }
