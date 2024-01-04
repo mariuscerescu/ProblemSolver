@@ -6,7 +6,7 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 public class XMLDeserializer {
-    public static MathWordProblem getPOSOutput() {
+    public static MathWordProblem getPOSOutput(String textToAnalyze) {
         String filePath = "src/main/java/org/example/problemMetaData/bin_PosRo/outputuri/intrebaria.xml";
         MathWordProblem posOutput = null;
 
@@ -21,6 +21,8 @@ public class XMLDeserializer {
             e.printStackTrace();
         }
 
+        assert posOutput != null;
+        posOutput.problem = textToAnalyze;
         return posOutput;
     }
 }

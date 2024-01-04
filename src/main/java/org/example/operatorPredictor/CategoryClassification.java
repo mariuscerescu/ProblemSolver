@@ -10,7 +10,7 @@ public class CategoryClassification {
 
     public static String getClassification(MathWordProblem mathWordProblem) {
 
-        String problem = mathWordProblem.getProblem();
+        String problem = mathWordProblem.problem;
         List<String> tokens = mathWordProblem.getAllTokens();
         List<Sentence> sentences = mathWordProblem.getSentences();
 

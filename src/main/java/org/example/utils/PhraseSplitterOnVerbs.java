@@ -11,12 +11,20 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class PhraseSplitterOnVerbs {
 
-    public ArrayList<String> getSentences(String problem) {
+    private MathWordProblem mathWordProblem;
+
+    private String problem;
+
+    public PhraseSplitterOnVerbs(MathWordProblem mathWordProblem){
+        this.mathWordProblem = mathWordProblem;
+        this.problem = mathWordProblem.problem;
+    }
+
+    public ArrayList<String> getSentences() {
 
         ArrayList<String> sentences = new ArrayList<>();
 
@@ -35,8 +43,6 @@ public class PhraseSplitterOnVerbs {
 //        if(question != null){
 //            problem = problem.replace(question, "");
 //        }
-        
-        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis(problem);
 
         //Tokenization
         //POS Tags extraction
@@ -56,17 +62,17 @@ public class PhraseSplitterOnVerbs {
                 verbWasPresent = true;
             }
 
-            if(tokens.get(i).equals(".") || tokens.get(i).equals("!") || (tokens.get(i).equals(",") && verbWasPresent) || i == tokens.size() - 1){
+            if(tokens.get(i).equals(".") || tokens.get(i).equals("!") || tokens.get(i).equals("?") || (tokens.get(i).equals(",") && verbWasPresent) || i == tokens.size() - 1){
 
                 endIndex = tokenIndices.get(i);
 
-                if(i == tokens.size() - 1 && !tokens.get(i).equals(".") && !tokens.get(i).equals("!") && !tokens.get(i).equals(",")){
+                if(i == tokens.size() - 1 && !tokens.get(i).equals(".") && !tokens.get(i).equals("!") && !tokens.get(i).equals("?") && !tokens.get(i).equals(",")){
                     endIndex = problem.length();
                 }
 
                 String subString = problem.substring(startIndex, endIndex);
 
-                if(verbWasPresent || sentences.size() == 0 || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!")){
+                if(verbWasPresent || sentences.isEmpty() || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!") || tokens.get(lastEndIndex).equals("?")){
                     sentences.add(subString);
                 }else{
                         String lastSent = sentences.get(sentences.size() - 1);
@@ -121,11 +127,30 @@ public class PhraseSplitterOnVerbs {
 
         }
 
-        if(sentences.size() == 0){
+        if(sentences.isEmpty()){
             sentences.add(problem.substring(startIndex, endIndex));
         }
+
+
+        for(int i = 0; i < sentences.size(); i++){
+            sentences.set(i, capitalizeAndAddPoint(sentences.get(i)));
+        }
+
         return sentences;
 
+    }
+
+    public static String capitalizeAndAddPoint(String input) {
+        // check if input is null or empty
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        // get the first character and convert it to upper case
+        char first = Character.toUpperCase(input.charAt(0));
+        // get the rest of the string
+        String rest = input.substring(1);
+        // return the concatenated string with a point at the end
+        return first + rest + ".";
     }
 
     @NotNull
@@ -146,8 +171,8 @@ public class PhraseSplitterOnVerbs {
     }
 
     public static void main(String[] args) {
-        PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs();
-        ArrayList<String> sentences = phraseSplitter.getSentences("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?");
+        PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs(BinPosRoRunner.runTextAnalysis("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?"));
+        ArrayList<String> sentences = phraseSplitter.getSentences();
         for(String sentence : sentences){
             System.out.println(sentence);
         }

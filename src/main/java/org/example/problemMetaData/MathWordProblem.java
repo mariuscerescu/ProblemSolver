@@ -8,6 +8,8 @@ import java.util.List;
 public class MathWordProblem {
     private List<Sentence> sentences;
 
+    public String problem;
+
     @XmlElement(name = "S")
     public List<Sentence> getSentences() {
         return sentences;
@@ -15,17 +17,6 @@ public class MathWordProblem {
 
     public void setSentences(List<Sentence> sentences) {
         this.sentences = sentences;
-    }
-
-    // Utility method to get the problem
-    public String getProblem(){
-        StringBuilder problem = new StringBuilder();
-        List<String> sentences = getAllSentences();
-        for(String sentence : sentences){
-            problem.append(sentence).append(" ");
-        }
-
-        return problem.toString();
     }
 
     // Utility method to get all words as a list of tokens

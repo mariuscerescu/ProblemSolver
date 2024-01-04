@@ -55,7 +55,7 @@ public class BinPosRoRunner {
 
         }
 
-        return XMLDeserializer.getPOSOutput();
+        return XMLDeserializer.getPOSOutput(textToAnalyze);
     }
 
 }

@@ -1,5 +1,7 @@
 package org.example.rules;
 
+import org.example.problemMetaData.BinPosRoRunner;
+import org.example.problemMetaData.MathWordProblem;
 import org.example.utils.PhraseSplitterOnVerbs;
 import org.example.utils.Tokenizer;
 
@@ -11,9 +13,11 @@ public class Rules {
     public ArrayList<String> sentences;
     public ArrayList<ArrayList<String>> tokens = new ArrayList<>();
 
-    public Rules(String sentence){
-        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs();
-        this.sentences = splitter.getSentences(sentence);
+    private MathWordProblem mathWordProblem;
+
+    public Rules(MathWordProblem mathWordProblem){
+        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(mathWordProblem);
+        this.sentences = splitter.getSentences();
         for(String s: sentences){
             System.out.println(s);
         }
@@ -68,9 +72,9 @@ public class Rules {
 
     public static void main(String[] args) {
 
-        String sentence = "La magazinul „Artizanat” erau puse în vânzare 100 de obiecte din lozie. Câte obiecte s-au vândut, dacă au rămas 25 de mese și 46 de scaune?";
+        String sentence = "Un ceasornicar a reparat 9 ceasuri? Trebuie să repare încă 15 ceasuri de mână și 7 ceasuri de perete. Câte comenzi de reparație? avea ceasornicarul?";
 
-        Rules rules = new Rules(sentence);
+        Rules rules = new Rules(BinPosRoRunner.runTextAnalysis(sentence));
 
         System.out.println(rules.rule1());
     }
