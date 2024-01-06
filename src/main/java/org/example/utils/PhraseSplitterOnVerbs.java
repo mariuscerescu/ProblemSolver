@@ -171,7 +171,7 @@ public class PhraseSplitterOnVerbs {
     }
 
     public static void main(String[] args) {
-        PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs(BinPosRoRunner.runTextAnalysis("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei?"));
+        PhraseSplitterOnVerbs phraseSplitter = new PhraseSplitterOnVerbs(BinPosRoRunner.runTextAnalysis("Alecu a citit 60 de pagini din cartea „Balcoane cu elefanți” și i-au mai rămas 39 de pagini. Câte pagini are cartea?"));
         ArrayList<String> sentences = phraseSplitter.getSentences();
         for(String sentence : sentences){
             System.out.println(sentence);

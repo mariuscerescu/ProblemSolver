@@ -54,6 +54,30 @@ public class MathWordProblem {
         return msdPerSentence;
     }
 
+    public ArrayList<ArrayList<String>> getPOSPerSentence() {
+        ArrayList<ArrayList<String>> posPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> posInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                posInOneSentence.add(word.getPos());
+            }
+            posPerSentence.add(posInOneSentence);
+        }
+        return posPerSentence;
+    }
+
+    public ArrayList<ArrayList<String>> getTypesPerSentence() {
+        ArrayList<ArrayList<String>> typesPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> typesInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                typesInOneSentence.add(word.getType());
+            }
+            typesPerSentence.add(typesInOneSentence);
+        }
+        return typesPerSentence;
+    }
+
     public ArrayList<String> getAllPOSTags(){
         ArrayList<String> posTags = new ArrayList<>();
         for(Sentence s : sentences){
@@ -76,6 +100,42 @@ public class MathWordProblem {
         }
 
         return msdTags;
+    }
+
+    public ArrayList<String> getAllTypeTags(){
+        ArrayList<String> typeTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                typeTags.add(w.getType());
+            }
+        }
+
+        return typeTags;
+    }
+
+    public ArrayList<String> getAllGenderTags(){
+        ArrayList<String> genderTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                genderTags.add(w.getGender());
+            }
+        }
+
+        return genderTags;
+    }
+
+    public ArrayList<String> getAllNumberTags(){
+        ArrayList<String> numberTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                numberTags.add(w.getNumber());
+            }
+        }
+
+        return numberTags;
     }
 
     // Utility method to get all sentences as a list of strings

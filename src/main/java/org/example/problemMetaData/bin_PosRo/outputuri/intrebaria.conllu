@@ -1,41 +1,24 @@
-1	M-	eu	PRON	Pp1-sr	Case=Dir|Number=Sing|Person=1|PronType=Prs	0	_	_	_
-2	am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	2	_	_	_
-3	gândit	gândi	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	5	_	_	_
-4	la	la	ADP	Sp	_	12	_	_	_
-5	un	un	DET	Timsr	Case=Dir|Gender=Masc|Number=Sing|Person=1	15	_	_	_
-6	număr	număr	NOUN	Ncmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	18	_	_	_
-7	.	.	PUNCT	PERIOD	_	23	_	_	_
+1	Ana	ana	NOUN	Ncfsrn	Case=Dir|Definite=Ind|Gender=Fem|Number=Sing	0	_	_	_
+2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	4	_	_	_
+3	8	8	NUM	M	_	8	_	_	_
+4	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	10	_	_	_
+5	.	.	PUNCT	PERIOD	_	14	_	_	_
 
-1	Am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	0	_	_	_
-2	împărțit	împărți	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	3	_	_	_
-3	sfertul	sfert	NOUN	Ncmsry	Case=Dir|Definite=Def|Gender=Masc|Number=Sing	12	_	_	_
-4	lui	el	PRON	Pp3mso	Case=Obl|Number=Sing|Person=3|PronType=Prs	20	_	_	_
-5	în	în	ADP	Sp	_	24	_	_	_
-6	jumătate	jumătate	NOUN	Ncfsrn	Case=Dir|Definite=Ind|Gender=Fem|Number=Sing	27	_	_	_
-7	.	.	PUNCT	PERIOD	_	35	_	_	_
+1	Ea	el	PRON	Pp3fsr	Case=Dir|Number=Sing|Person=3|PronType=Prs	0	_	_	_
+2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	3	_	_	_
+3	de	de	ADP	Sp	_	7	_	_	_
+4	2	2	NUM	M	_	10	_	_	_
+5	ori	oară	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	12	_	_	_
+6	mai	mai	ADV	Rg	_	16	_	_	_
+7	multe	mult	PRON	Pi3fpr	Case=Dir|Person=3	20	_	_	_
+8	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	26	_	_	_
+9	decât	decât	ADV	Rg	_	31	_	_	_
+10	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	37	_	_	_
+11	.	.	PUNCT	PERIOD	_	42	_	_	_
 
-1	Am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	0	_	_	_
-2	triplat	tripla	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	3	_	_	_
-3	numărul	număr	NOUN	Ncmsry	Case=Dir|Definite=Def|Gender=Masc|Number=Sing	11	_	_	_
-4	obținut	obținut	ADJ	Afpmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	19	_	_	_
-5	.	.	PUNCT	PERIOD	_	26	_	_	_
-
-1	Am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	0	_	_	_
-2	mărit	mări	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	3	_	_	_
-3	rezultatul	rezultat	NOUN	Ncmsry	Case=Dir|Definite=Def|Gender=Masc|Number=Sing	9	_	_	_
-4	cu	cu	ADP	Sp	_	20	_	_	_
-5	2	2	NUM	M	_	23	_	_	_
-6	și	și	CCONJ	Cc	_	25	_	_	_
-7	am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	28	_	_	_
-8	obținut	obține	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	31	_	_	_
-9	8	8	NUM	M	_	39	_	_	_
-10	.	.	PUNCT	PERIOD	_	40	_	_	_
-
-1	La	la	ADP	Sp	_	0	_	_	_
-2	ce	ce	PRON	Pw3--r	Case=Dir|Person=3	3	_	_	_
-3	număr	număr	NOUN	Ncmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	6	_	_	_
-4	m-	eu	PRON	Pp1-sr	Case=Dir|Number=Sing|Person=1|PronType=Prs	12	_	_	_
-5	am	avea	AUX	Vaip1p	Mood=Ind|Number=Plur|Person=1|Tense=Pres	14	_	_	_
-6	gândit	gândi	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	17	_	_	_
-7	.	.	PUNCT	PERIOD	_	23	_	_	_
+1	Câte	cât	PRON	Pi3fpr	Case=Dir|Person=3	0	_	_	_
+2	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	5	_	_	_
+3	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	10	_	_	_
+4	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	14	_	_	_
+5	?	?	PUNCT	QUEST	_	19	_	_	_
 
