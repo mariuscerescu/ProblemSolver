@@ -27,4 +27,31 @@
     <W LEMMA="maria" MSD="Np" POS="NOUN" Type="proper" id="3.4" offset="14">Maria</W>
     <W LEMMA="?" MSD="QUEST" id="3.5" offset="19">?</W>
   </S>
+  <S id="4" offset="81">
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="ana" MSD="Ncfsrn" Number="singular" POS="NOUN" Type="common" id="4.1" offset="0">Ana</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="4.2" offset="4">are</W>
+    <W EXTRA="NotInDict" LEMMA="8" MSD="M" POS="NUMERAL" id="4.3" offset="8">8</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="4.4" offset="10">nuci</W>
+    <W LEMMA="." MSD="PERIOD" id="4.5" offset="14">.</W>
+  </S>
+  <S id="5" offset="97">
+    <W Case="direct" Gender="feminine" LEMMA="el" MSD="Pp3fsr" Number="singular" POS="PRONOUN" Person="third" Type="personal" id="5.1" offset="0">Ea</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="5.2" offset="3">are</W>
+    <W LEMMA="de" MSD="Sp" POS="ADPOSITION" id="5.3" offset="7">de</W>
+    <W EXTRA="NotInDict" LEMMA="2" MSD="M" POS="NUMERAL" id="5.4" offset="10">2</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="oară" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="5.5" offset="12">ori</W>
+    <W LEMMA="mai" MSD="Rg" POS="ADVERB" id="5.6" offset="16">mai</W>
+    <W Case="direct" Gender="feminine" LEMMA="mult" MSD="Pi3fpr" Number="plural" POS="PRONOUN" Person="third" Type="indefinite" id="5.7" offset="20">multe</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="5.8" offset="26">nuci</W>
+    <W LEMMA="decât" MSD="Rg" POS="ADVERB" id="5.9" offset="31">decât</W>
+    <W LEMMA="maria" MSD="Np" POS="NOUN" Type="proper" id="5.10" offset="37">Maria</W>
+    <W LEMMA="." MSD="PERIOD" id="5.11" offset="42">.</W>
+  </S>
+  <S id="6" offset="141">
+    <W Case="direct" Gender="feminine" LEMMA="cât" MSD="Pi3fpr" Number="plural" POS="PRONOUN" Person="third" Type="indefinite" id="6.1" offset="0">Câte</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="6.2" offset="5">nuci</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="6.3" offset="10">are</W>
+    <W LEMMA="maria" MSD="Np" POS="NOUN" Type="proper" id="6.4" offset="14">Maria</W>
+    <W LEMMA="?" MSD="QUEST" id="6.5" offset="19">?</W>
+  </S>
 </POS_Output>

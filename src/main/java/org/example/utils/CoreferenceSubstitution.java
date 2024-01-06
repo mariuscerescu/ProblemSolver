@@ -16,7 +16,7 @@ public class CoreferenceSubstitution {
     private String originalProblem;
     private ArrayList<Integer> tokenIndices;
 
-    public CoreferenceSubstitution(MathWordProblem mathWordProblem){
+    public CoreferenceSubstitution(MathWordProblem mathWordProblem) {
         tokens = mathWordProblem.getAllTokens();
         pos = mathWordProblem.getAllPOSTags();
         gender = mathWordProblem.getAllGenderTags();
@@ -26,55 +26,49 @@ public class CoreferenceSubstitution {
         tokenIndices = getTokenIndices(originalProblem, tokens);
     }
 
-    public String getSubstitution(){
+    public String getSubstitution() {
+        StringBuilder result = new StringBuilder(originalProblem);
 
-        String result = originalProblem;
+        for (int i = 0; i < tokens.size(); i++) {
+            if (pos.get(i) != null && type.get(i) != null &&
+                    pos.get(i).equals("PRONOUN") && type.get(i).equals("personal")) {
 
-        String pronounFound, pronounFoundGender, pronounFoundNumber;
+                String pronounFound = tokens.get(i);
+                String pronounFoundGender = gender.get(i);
+                String pronounFoundNumber = number.get(i);
 
-        for(int i = 0; i < tokens.size(); i++){
+                for (int j = i - 1; j >= 0; j--) {
+                    if (pos.get(j) != null && gender.get(j) != null && number.get(j) != null &&
+                            pos.get(j).equals("NOUN") && gender.get(j).equals(pronounFoundGender) &&
+                            number.get(j).equals(pronounFoundNumber)) {
 
-            if(pos.get(i) != null && type.get(i) != null){
-                if(pos.get(i).equals("PRONOUN") && type.get(i).equals("personal")){
-                    pronounFound = tokens.get(i);
-                    pronounFoundGender = gender.get(i);
-                    pronounFoundNumber = number.get(i);
+                        String noun = tokens.get(j);
+                        int tokenIndex = tokenIndices.get(i);
 
-                    for(int j = i - 1; j >= 0; j--){
-                        if(pos.get(j) != null && gender.get(j) != null && number.get(j) != null){
-                            if(pos.get(j).equals("NOUN") && gender.get(j).equals(pronounFoundGender) && number.get(j).equals(pronounFoundNumber)){
-                                String noun = tokens.get(j);
-                                result = originalProblem.substring(0, tokenIndices.get(i)) + noun + originalProblem.substring(tokenIndices.get(i) + pronounFound.length());
-                            }
-                        }
-
+                        result.replace(tokenIndex, tokenIndex + pronounFound.length(), noun);
+                        tokens.set(i, noun);
+                        tokenIndices = getTokenIndices(result.toString(), tokens);
+                        break;
                     }
                 }
             }
         }
-        return result;
+        return result.toString();
     }
 
     private static ArrayList<Integer> getTokenIndices(String problem, List<String> tokens) {
         ArrayList<Integer> tokenIndices = new ArrayList<>();
+        StringBuilder tempProblem = new StringBuilder(problem);
 
-        StringBuilder tempProblem = new StringBuilder();
-        tempProblem.append(problem);
-        StringBuilder replacement = new StringBuilder();
-
-        for(String token : tokens){
+        for (String token : tokens) {
             tokenIndices.add(tempProblem.indexOf(token));
-            replacement.setLength(0);
-            replacement.append("~".repeat(token.length()));
-            tempProblem.replace(tempProblem.indexOf(token), tempProblem.indexOf(token) + token.length(), replacement.toString());
+            tempProblem.replace(tempProblem.indexOf(token), tempProblem.indexOf(token) + token.length(), " ".repeat(token.length()));
         }
         return tokenIndices;
     }
 
     public static void main(String[] args) {
-
-        CoreferenceSubstitution coreferenceSubstitution = new CoreferenceSubstitution(BinPosRoRunner.runTextAnalysis("Ana are 8 nuci. Ea are de 2 ori mai multe nuci decât Maria. Câte nuci are Maria?"));
+        CoreferenceSubstitution coreferenceSubstitution = new CoreferenceSubstitution(BinPosRoRunner.runTextAnalysis("Ana are 8 nuci. Ea are de 2 ori mai multe nuci decât Maria. Câte nuci are Maria? Ana are 8 nuci. Ea are de 2 ori mai multe nuci decât Maria. Câte nuci are Maria?"));
         System.out.println(coreferenceSubstitution.getSubstitution());
     }
-
 }
