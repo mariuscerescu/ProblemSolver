@@ -1,48 +1,29 @@
-1	Ana	ana	NOUN	Ncfsrn	Case=Dir|Definite=Ind|Gender=Fem|Number=Sing	0	_	_	_
-2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	4	_	_	_
-3	8	8	NUM	M	_	8	_	_	_
-4	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	10	_	_	_
-5	.	.	PUNCT	PERIOD	_	14	_	_	_
+1	S	sud	PUNCT	Y	_	0	_	_	_
+2	:	:	PUNCT	COLON	_	1	_	_	_
+3	Ana	ana	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	3	_	_	_
+4	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	7	_	_	_
+5	8	8	NUM	M	_	11	_	_	_
+6	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	13	_	_	_
+7	.	.	PUNCT	PERIOD	_	17	_	_	_
 
-1	Ea	el	PRON	Pp3fsr	Case=Dir|Number=Sing|Person=3|PronType=Prs	0	_	_	_
-2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	3	_	_	_
-3	de	de	ADP	Sp	_	7	_	_	_
-4	2	2	NUM	M	_	10	_	_	_
-5	ori	oară	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	12	_	_	_
-6	mai	mai	ADV	Rg	_	16	_	_	_
-7	multe	mult	PRON	Pi3fpr	Case=Dir|Person=3	20	_	_	_
-8	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	26	_	_	_
-9	decât	decât	ADV	Rg	_	31	_	_	_
-10	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	37	_	_	_
-11	.	.	PUNCT	PERIOD	_	42	_	_	_
+1	S	sud	PUNCT	Y	_	0	_	_	_
+2	:	:	PUNCT	COLON	_	1	_	_	_
+3	Ana	ana	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	3	_	_	_
+4	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	7	_	_	_
+5	cu	cu	ADP	Sp	_	11	_	_	_
+6	10	10	NUM	M	_	14	_	_	_
+7	mai	mai	ADV	Rg	_	17	_	_	_
+8	multe	mult	PRON	Pi3fpr	Case=Dir|Person=3	21	_	_	_
+9	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	27	_	_	_
+10	decât	decât	ADV	Rg	_	32	_	_	_
+11	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	38	_	_	_
+12	.	.	PUNCT	PERIOD	_	43	_	_	_
 
-1	Câte	cât	PRON	Pi3fpr	Case=Dir|Person=3	0	_	_	_
-2	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	5	_	_	_
-3	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	10	_	_	_
-4	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	14	_	_	_
-5	?	?	PUNCT	QUEST	_	19	_	_	_
-
-1	Ana	ana	NOUN	Ncfsrn	Case=Dir|Definite=Ind|Gender=Fem|Number=Sing	0	_	_	_
-2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	4	_	_	_
-3	8	8	NUM	M	_	8	_	_	_
-4	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	10	_	_	_
-5	.	.	PUNCT	PERIOD	_	14	_	_	_
-
-1	Ea	el	PRON	Pp3fsr	Case=Dir|Number=Sing|Person=3|PronType=Prs	0	_	_	_
-2	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	3	_	_	_
-3	de	de	ADP	Sp	_	7	_	_	_
-4	2	2	NUM	M	_	10	_	_	_
-5	ori	oară	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	12	_	_	_
-6	mai	mai	ADV	Rg	_	16	_	_	_
-7	multe	mult	PRON	Pi3fpr	Case=Dir|Person=3	20	_	_	_
-8	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	26	_	_	_
-9	decât	decât	ADV	Rg	_	31	_	_	_
-10	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	37	_	_	_
-11	.	.	PUNCT	PERIOD	_	42	_	_	_
-
-1	Câte	cât	PRON	Pi3fpr	Case=Dir|Person=3	0	_	_	_
-2	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	5	_	_	_
-3	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	10	_	_	_
-4	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	14	_	_	_
-5	?	?	PUNCT	QUEST	_	19	_	_	_
+1	S	sud	PUNCT	Y	_	0	_	_	_
+2	:	:	PUNCT	COLON	_	1	_	_	_
+3	Câte	câte	ADV	Rg	_	3	_	_	_
+4	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	8	_	_	_
+5	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	13	_	_	_
+6	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	17	_	_	_
+7	.	.	PUNCT	PERIOD	_	22	_	_	_
 

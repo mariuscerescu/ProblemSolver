@@ -10,7 +10,7 @@ import java.util.List;
 public class Test {
     public static void main(String[] args) {
 
-        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis("S: Cartea are 200 de pagini. Mihai a citit 3/5 din ea. Câte pagini a citit Mihai?");
+        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis("S: Mircea a făcut 18 fotografii");
 
     }
 }

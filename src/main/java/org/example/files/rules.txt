@@ -1,0 +1,2 @@
+cu\s+(\d+).*mai\s+(mult|multe)\b ---- X + ---- exemplu: cu 4 mere sau pere de prune mai mult/multe
+de\s+(\d+).*mai\s+(mult|multe)\b ---- X * ---- exemplu: de 10 ori mai mult/multe
