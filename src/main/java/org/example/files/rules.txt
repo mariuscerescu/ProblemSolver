@@ -1,2 +1,4 @@
-cu\s+(\d+).*mai\s+(mult|multe)\b ---- X + ---- exemplu: cu 4 mere sau pere de prune mai mult/multe
-de\s+(\d+).*mai\s+(mult|multe)\b ---- X * ---- exemplu: de 10 ori mai mult/multe
+cu\s+(\d+).*mai\s+(mult|multe|mulți)\b ---- x + ---- exemplu: cu 4 mere mai mult
+cu\s+(\d+).*mai\s+(puțin|puține|puțini)\b ---- x - ---- exemplu: cu 4 mere mai puțin
+de\s+(\d+).*mai\s+(mult|multe|mulți)\b ---- x * ---- exemplu: de 10 ori mai mult
+de\s+(\d+).*mai\s+(puțini|puține|puțini)\b ---- x / ---- exemplu: de 10 ori mai puțini

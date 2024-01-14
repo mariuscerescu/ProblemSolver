@@ -3,6 +3,7 @@ package org.example.rules;
 import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.MathWordProblem;
 import org.example.utils.CoreferenceSubstitution;
+import org.example.utils.EquationSolver;
 import org.example.utils.PhraseSplitterOnVerbs;
 import org.example.utils.Tokenizer;
 
@@ -179,12 +180,12 @@ public class Rules {
         }
 
         for(Entity entity : entities){
-            System.out.println("\n");
+            System.out.println();
             System.out.println(entity.owner);
             System.out.println(entity.item);
             System.out.println(entity.quantity);
             System.out.println(entity.attribute);
-            System.out.println("\n");
+            System.out.println();
         }
     }
 
@@ -206,6 +207,7 @@ public class Rules {
                     Matcher matcher = pattern.matcher(sentences.get(i));
 
                     if(matcher.find()){
+                        System.out.println("Relation was found!");
                         nr = Integer.parseInt(matcher.group(1));
                         indexPF = i;
                         relations.set(j, relations.get(j) + " " + nr);
@@ -227,7 +229,7 @@ public class Rules {
                     String type = typesPerSentence.get(indexPF).get(i);
                     String token = tokensPerSentence.get(indexPF).get(i);
 
-                    if(pos != null && type != null && pos.equals("NOUNS") && type.equals("proper")){
+                    if(pos != null && type != null && pos.equals("NOUN") && type.equals("proper")){
                         for(int j = 0; j < entities.size(); j++){
                             if(entities.get(j).owner.equals(token)){
                                 if(firstEntity == null){
@@ -255,7 +257,8 @@ public class Rules {
          if(entities.size() == 2){
              for(Entity entity : entities){
                  if(entity.quantity != null && entity.relation != null){
-                     equation.append(entity.quantity).append(" = ").append(entity.relation);
+                     equation.append(entity.quantity).append(" == ").append(entity.relation);
+                     System.out.println(equation);
                  }
              }
          }
@@ -265,7 +268,7 @@ public class Rules {
 
     public static void main(String[] args) throws IOException {
 
-        String sentence = "Ana are 8 nuci. Ea are cu 10 mai multe nuci decât Maria. Câte nuci are Maria?";
+        String sentence = "Ronț are 6 morcovi. Ronț are cu 3 morcovi mai puțini decât Cronț. Câți morcovi are Cronț?";
 
         MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis(sentence);
 
@@ -283,8 +286,9 @@ public class Rules {
 
         rules.createEquation();
 
-        System.out.println(rules.equation);
-
+        if(!rules.equation.isEmpty()){
+            System.out.println("Răspunsul este : " + EquationSolver.solve(rules.equation.toString()));
+        }
 
     }
 
