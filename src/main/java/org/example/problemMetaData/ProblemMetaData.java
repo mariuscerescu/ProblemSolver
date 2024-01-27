@@ -8,13 +8,6 @@ import java.util.List;
 public class ProblemMetaData {
     private List<Sentence> sentences;
     public String problem;
-    public ArrayList<String> tokens;
-    public ArrayList<ArrayList<String>> tokensPerSentence;
-
-    public ProblemMetaData(){
-        tokens = getAllTokens();
-        tokensPerSentence = getTokensPerSentence();
-    }
 
     @XmlElement(name = "S")
     public List<Sentence> getSentences() {
