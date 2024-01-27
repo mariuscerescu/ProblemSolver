@@ -6,16 +6,16 @@ import javax.xml.bind.Unmarshaller;
 import java.io.File;
 
 public class XMLDeserializer {
-    public static MathWordProblem getPOSOutput(String textToAnalyze) {
+    public static ProblemMetaData getPOSOutput(String textToAnalyze) {
         String filePath = "src/main/java/org/example/problemMetaData/bin_PosRo/outputuri/intrebaria.xml";
-        MathWordProblem posOutput = null;
+        ProblemMetaData posOutput = null;
 
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(MathWordProblem.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(ProblemMetaData.class);
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             File xmlFile = new File(filePath);
-            posOutput = (MathWordProblem) unmarshaller.unmarshal(xmlFile);
+            posOutput = (ProblemMetaData) unmarshaller.unmarshal(xmlFile);
 
         } catch (JAXBException e) {
             e.printStackTrace();

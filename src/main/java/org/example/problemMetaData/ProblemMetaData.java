@@ -5,10 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @XmlRootElement(name = "POS_Output")
-public class MathWordProblem {
+public class ProblemMetaData {
     private List<Sentence> sentences;
-
     public String problem;
+    public ArrayList<String> tokens;
+    public ArrayList<ArrayList<String>> tokensPerSentence;
+
+    public ProblemMetaData(){
+        tokens = getAllTokens();
+        tokensPerSentence = getTokensPerSentence();
+    }
 
     @XmlElement(name = "S")
     public List<Sentence> getSentences() {
@@ -42,16 +48,16 @@ public class MathWordProblem {
         return tokensPerSentence;
     }
 
-    public ArrayList<ArrayList<String>> getMSDPerSentence() {
-        ArrayList<ArrayList<String>> msdPerSentence = new ArrayList<>();
-        for (Sentence sentence : sentences) {
-            ArrayList<String> msdInOneSentence = new ArrayList<>();
-            for (Word word : sentence.getWords()) {
-                msdInOneSentence.add(word.getMsd());
+    public ArrayList<String> getAllPOSTags(){
+        ArrayList<String> posTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                posTags.add(w.getPos());
             }
-            msdPerSentence.add(msdInOneSentence);
         }
-        return msdPerSentence;
+
+        return posTags;
     }
 
     public ArrayList<ArrayList<String>> getPOSPerSentence() {
@@ -66,30 +72,6 @@ public class MathWordProblem {
         return posPerSentence;
     }
 
-    public ArrayList<ArrayList<String>> getTypesPerSentence() {
-        ArrayList<ArrayList<String>> typesPerSentence = new ArrayList<>();
-        for (Sentence sentence : sentences) {
-            ArrayList<String> typesInOneSentence = new ArrayList<>();
-            for (Word word : sentence.getWords()) {
-                typesInOneSentence.add(word.getType());
-            }
-            typesPerSentence.add(typesInOneSentence);
-        }
-        return typesPerSentence;
-    }
-
-    public ArrayList<String> getAllPOSTags(){
-        ArrayList<String> posTags = new ArrayList<>();
-        for(Sentence s : sentences){
-            List<Word> words = s.getWords();
-            for(Word w : words){
-                posTags.add(w.getPos());
-            }
-        }
-
-        return posTags;
-    }
-
     public ArrayList<String> getAllMSDTags(){
         ArrayList<String> msdTags = new ArrayList<>();
         for(Sentence s : sentences){
@@ -100,6 +82,18 @@ public class MathWordProblem {
         }
 
         return msdTags;
+    }
+
+    public ArrayList<ArrayList<String>> getMSDPerSentence() {
+        ArrayList<ArrayList<String>> msdPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> msdInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                msdInOneSentence.add(word.getMsd());
+            }
+            msdPerSentence.add(msdInOneSentence);
+        }
+        return msdPerSentence;
     }
 
     public ArrayList<String> getAllTypeTags(){
@@ -114,6 +108,18 @@ public class MathWordProblem {
         return typeTags;
     }
 
+    public ArrayList<ArrayList<String>> getTypesPerSentence() {
+        ArrayList<ArrayList<String>> typesPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> typesInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                typesInOneSentence.add(word.getType());
+            }
+            typesPerSentence.add(typesInOneSentence);
+        }
+        return typesPerSentence;
+    }
+
     public ArrayList<String> getAllGenderTags(){
         ArrayList<String> genderTags = new ArrayList<>();
         for(Sentence s : sentences){
@@ -124,6 +130,18 @@ public class MathWordProblem {
         }
 
         return genderTags;
+    }
+
+    public ArrayList<ArrayList<String>> getGenderPerSentence() {
+        ArrayList<ArrayList<String>> gendersPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> gendersInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                gendersInOneSentence.add(word.getGender());
+            }
+            gendersPerSentence.add(gendersInOneSentence);
+        }
+        return gendersPerSentence;
     }
 
     public ArrayList<String> getAllNumberTags(){
@@ -138,17 +156,40 @@ public class MathWordProblem {
         return numberTags;
     }
 
-    // Utility method to get all sentences as a list of strings
-    public List<String> getAllSentences() {
-        List<String> allSentences = new ArrayList<>();
+    public ArrayList<ArrayList<String>> getNumbersPerSentence() {
+        ArrayList<ArrayList<String>> numbersPerSentence = new ArrayList<>();
         for (Sentence sentence : sentences) {
-            StringBuilder sentenceText = new StringBuilder();
+            ArrayList<String> numbersInOneSentence = new ArrayList<>();
             for (Word word : sentence.getWords()) {
-                sentenceText.append(word.getContent()).append(" ");
+                numbersInOneSentence.add(word.getNumber());
             }
-            allSentences.add(sentenceText.toString().trim());
+            numbersPerSentence.add(numbersInOneSentence);
         }
-        return allSentences;
+        return numbersPerSentence;
+    }
+
+    public ArrayList<String> getAllLemmaTags(){
+        ArrayList<String> lemmaTags = new ArrayList<>();
+        for(Sentence s : sentences){
+            List<Word> words = s.getWords();
+            for(Word w : words){
+                lemmaTags.add(w.getLemma());
+            }
+        }
+
+        return lemmaTags;
+    }
+
+    public ArrayList<ArrayList<String>> getLemmasPerSentence() {
+        ArrayList<ArrayList<String>> lemmasPerSentence = new ArrayList<>();
+        for (Sentence sentence : sentences) {
+            ArrayList<String> lemmasInOneSentence = new ArrayList<>();
+            for (Word word : sentence.getWords()) {
+                lemmasInOneSentence.add(word.getLemma());
+            }
+            lemmasPerSentence.add(lemmasInOneSentence);
+        }
+        return lemmasPerSentence;
     }
 
 }

@@ -1,20 +1,15 @@
 package org.example.rules;
 
 import org.example.problemMetaData.BinPosRoRunner;
-import org.example.problemMetaData.MathWordProblem;
-import org.example.utils.CoreferenceSubstitution;
-import org.example.utils.EquationSolver;
-import org.example.utils.PhraseSplitterOnVerbs;
-import org.example.utils.Tokenizer;
+import org.example.problemMetaData.ProblemMetaData;
+import org.example.utils.*;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,24 +20,29 @@ public class Rules {
     private ArrayList<ArrayList<String>> msdPerSentence;
     private ArrayList<ArrayList<String>> typesPerSentence;
     private ArrayList<ArrayList<String>> posPerSentence;
-    private MathWordProblem mathWordProblem;
+    private ProblemMetaData problemMetaData;
     private ArrayList<String> tokens;
-    ArrayList<Entity> entities = new ArrayList<>();
-    ArrayList<String> posesie;
-    ArrayList<String> regexes = new ArrayList<>();
-    ArrayList<String> relations = new ArrayList<>();
+    private String question;
+    private ProblemMetaData questionMetaData;
+    private ArrayList<Entity> entities = new ArrayList<>();
+    private ArrayList<String> posesie;
+    private ArrayList<String> regexes = new ArrayList<>();
+    private ArrayList<String> relations = new ArrayList<>();
+    private StringBuilder equation = new StringBuilder();
+    private ArrayList<String> patternExp = new ArrayList<>();
+    private int indexPF = -1; //index of the sentence where the pattern was found;
+    private String relation = null;
+    private String patternExplanation = null;
 
-
-    public StringBuilder equation = new StringBuilder();
-
-    public Rules(MathWordProblem mathWordProblem) throws IOException {
-        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(mathWordProblem);
+    public Rules(ProblemMetaData problemMetaData) throws IOException {
+        question = QuestionFinder.getQuestion(problemMetaData.problem);
+        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(problemMetaData);
         this.sentences = splitter.getSentences();
         for(String s: sentences){
             System.out.println(s);
         }
         setAttributes();
-        posesie = (ArrayList<String>) Files.readAllLines(Paths.get("src/main/java/org/example/files/posesie.txt"));
+        posesie = (ArrayList<String>) Files.readAllLines(Paths.get("src/main/java/org/example/files/possession.txt"));
     }
 
     private void setAttributes() throws IOException {
@@ -50,23 +50,25 @@ public class Rules {
         for(String sentence : sentences){
             builder.append("S: ").append(sentence).append(" ");
         }
-        MathWordProblem analyzedSentences = BinPosRoRunner.runTextAnalysis(builder.toString());
+        ProblemMetaData analyzedSentences = BinPosRoRunner.runTextAnalysis(builder.toString());
         tokensPerSentence = analyzedSentences.getTokensPerSentence();
         msdPerSentence = analyzedSentences.getMSDPerSentence();
         typesPerSentence = analyzedSentences.getTypesPerSentence();
         posPerSentence = analyzedSentences.getPOSPerSentence();
         tokens = analyzedSentences.getAllTokens();
-        this.mathWordProblem = analyzedSentences;
+        this.problemMetaData = analyzedSentences;
         setRegexArray();
+        questionMetaData = BinPosRoRunner.runTextAnalysis(this.question);
     }
 
     public void setRegexArray() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("src/main/java/org/example/files/rules.txt"));
-        String line, regex, relation;
+        String line, regex, relation, patternExplication;
         while((line = reader.readLine()) != null){
             regex = line.substring(0, line.indexOf("----")).strip();
             relation = line.substring(line.indexOf("----") + 5, line.lastIndexOf("----")).strip();
-
+            patternExplication = line.substring(line.indexOf("Explicatie:") + 12);
+            patternExp.add(patternExplication);
             regexes.add(regex);
             relations.add(relation);
         }
@@ -195,8 +197,6 @@ public class Rules {
 
             Entity firstEntity = null, secondEntity = null;
 
-            int indexPF = -1; //index of the sentence where the pattern was found;
-            String relation = null;
             int nr;
 
             for(int i = 0; i < sentences.size(); i++){
@@ -212,6 +212,7 @@ public class Rules {
                         indexPF = i;
                         relations.set(j, relations.get(j) + " " + nr);
                         relation = relations.get(j);
+                        patternExplanation = patternExp.get(j);
                         break;
                     }
 
@@ -254,31 +255,104 @@ public class Rules {
     }
 
     public void createEquation(){
-         if(entities.size() == 2){
-             for(Entity entity : entities){
-                 if(entity.quantity != null && entity.relation != null){
-                     equation.append(entity.quantity).append(" == ").append(entity.relation);
-                     System.out.println(equation);
-                 }
-             }
-         }
+
+        String attribute = null;
+        String pNoun = null;
+        String cNoun = null;
+
+        int pNouns = 0, attributes = 0, cNouns = 0, possession = 0;
+
+        ArrayList<String> questionPOS = questionMetaData.getAllPOSTags();
+        ArrayList<String> types = questionMetaData.getAllTypeTags();
+        ArrayList<String> tokens = questionMetaData.getAllTokens();
+
+        for(int i = 0; i < tokens.size(); i++){
+
+            if(questionPOS.get(i) != null && questionPOS.get(i).equals("NOUN") && types.get(i) != null && types.get(i).equals("proper")){
+                pNouns++;
+                pNoun = tokens.get(i);
+            }
+
+            if(questionPOS.get(i) != null && questionPOS.get(i).equals("NOUN") && types.get(i) != null && types.get(i).equals("common")){
+                cNouns++;
+                cNoun = tokens.get(i);
+            }
+
+            if(questionPOS.get(i) != null && questionPOS.get(i).equals("ADJECTIVE")){
+                attributes++;
+                attribute = tokens.get(i);
+            }
+
+            if(posesie.contains(tokens.get(i))){
+                possession++;
+            }
+
+        }
+
+        if(pNouns == 1 && (attributes == 1 || attributes == 0) && cNouns == 1 && possession == 1){
+            if(entities.size() == 2){
+                for(Entity entity : entities){
+
+                    if(attributes == 0){
+
+                        if(entity.quantity != null && entity.relation != null && entity.relatedTo.owner.equals(pNoun) && entity.item.equals(cNoun) && entity.relatedTo.quantity == null){
+                            equation.append(entity.quantity).append(" == ").append(entity.relation);
+                            System.out.println(equation);
+                        }
+
+                    }else{
+
+                        if(entity.quantity != null && entity.relation != null && entity.relatedTo.owner.equals(pNoun) && entity.item.equals(cNoun) && entity.relatedTo.quantity == null && entity.attribute.equals(attribute)){
+                            equation.append(entity.quantity).append(" == ").append(entity.relation);
+                            System.out.println(equation);
+                        }
+
+                    }
+
+
+                }
+            }
+        }
+
     }
 
+    public void showExplanation(){
+
+        if(equation != null){
+
+            System.out.println("Pentru a rezolva problema vom crea o ecuație din datele furnizate pe care apoi o vom rezolva pentru a obține răspunsul.");
+
+            System.out.println("Notăm cu „x” informația pe care trebuie să o aflăm.");
+
+            System.out.println("În cazul nostu „x” va reprezenta " + question.toLowerCase().replace("?", "."));
+
+            System.out.println("Deoarece știm că " + entities.get(0).owner + " are " + entities.get(0).quantity + " " + entities.get(0).item + " și de asemenea, ");
+
+            System.out.println(sentences.get(indexPF));
+
+            System.out.println("Iar deoarece " + patternExplanation);
+
+            System.out.println("Putem crea ecuația: " + equation);
+
+
+        }
+
+    }
 
 
     public static void main(String[] args) throws IOException {
 
-        String sentence = "Ronț are 6 morcovi. Ronț are cu 3 morcovi mai puțini decât Cronț. Câți morcovi are Cronț?";
+        String sentence = "Ana are 8 nuci. Ea are de 2 ori mai multe nuci decât Maria. Câte nuci are Maria?";
 
-        MathWordProblem mathWordProblem = BinPosRoRunner.runTextAnalysis(sentence);
+        ProblemMetaData problemMetaData = BinPosRoRunner.runTextAnalysis(sentence);
 
-        CoreferenceSubstitution coreferenceSubstitution = new CoreferenceSubstitution(mathWordProblem);
+        CoreferenceSubstitution coreferenceSubstitution = new CoreferenceSubstitution(problemMetaData);
 
         String result = coreferenceSubstitution.getSubstitution();
 
-        mathWordProblem = BinPosRoRunner.runTextAnalysis(result);
+        problemMetaData = BinPosRoRunner.runTextAnalysis(result);
 
-        Rules rules = new Rules(mathWordProblem);
+        Rules rules = new Rules(problemMetaData);
 
         rules.checkForEntities();
 
@@ -286,9 +360,14 @@ public class Rules {
 
         rules.createEquation();
 
+        System.out.println();
+
+        rules.showExplanation();
+
         if(!rules.equation.isEmpty()){
             System.out.println("Răspunsul este : " + EquationSolver.solve(rules.equation.toString()));
         }
+
 
     }
 

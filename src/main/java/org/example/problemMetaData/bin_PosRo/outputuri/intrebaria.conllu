@@ -1,29 +1,6 @@
-1	S	sud	PUNCT	Y	_	0	_	_	_
-2	:	:	PUNCT	COLON	_	1	_	_	_
-3	Ronț	Ronț	NOUN	Npfpon	Case=Obl|Definite=Ind|Gender=Fem|Number=Plur	3	_	_	_
-4	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	8	_	_	_
-5	6	6	NUM	M	_	12	_	_	_
-6	morcovi	morcov	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	14	_	_	_
-7	.	.	PUNCT	PERIOD	_	21	_	_	_
-
-1	S	sud	PUNCT	Y	_	0	_	_	_
-2	:	:	PUNCT	COLON	_	1	_	_	_
-3	Ronț	Ronț	NOUN	Npfpon	Case=Obl|Definite=Ind|Gender=Fem|Number=Plur	3	_	_	_
-4	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	8	_	_	_
-5	cu	cu	ADP	Sp	_	12	_	_	_
-6	3	3	NUM	M	_	15	_	_	_
-7	morcovi	morcov	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	17	_	_	_
-8	mai	mai	ADV	Rg	_	25	_	_	_
-9	puțini	puțin	DET	Di3mpo	Case=Obl|Gender=Masc|Number=Plur|Person=3	29	_	_	_
-10	decât	decât	ADV	Rg	_	36	_	_	_
-11	Cronț	Cronț	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	42	_	_	_
-12	.	.	PUNCT	PERIOD	_	47	_	_	_
-
-1	S	sud	PUNCT	Y	_	0	_	_	_
-2	:	:	PUNCT	COLON	_	1	_	_	_
-3	Câți	cât	DET	Dw3mpr	Case=Dir|Gender=Masc|Number=Plur|Person=3	3	_	_	_
-4	morcovi	morcov	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	8	_	_	_
-5	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	16	_	_	_
-6	Cronț	Cronț	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	20	_	_	_
-7	.	.	PUNCT	PERIOD	_	25	_	_	_
+1	Câte	cât	PRON	Pi3fpr	Case=Dir|Person=3	0	_	_	_
+2	nuci	nuc	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	5	_	_	_
+3	are	avea	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	10	_	_	_
+4	Maria	maria	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	14	_	_	_
+5	?	?	PUNCT	QUEST	_	19	_	_	_
 

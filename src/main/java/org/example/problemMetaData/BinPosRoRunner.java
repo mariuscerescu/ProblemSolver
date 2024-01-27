@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class BinPosRoRunner {
 
-    public static MathWordProblem runTextAnalysis(String textToAnalyze) {
+    public static ProblemMetaData runTextAnalysis(String textToAnalyze) {
         Path inputPath = Paths.get("src/main/java/org/example/problemMetaData/bin_PosRo/inputuri/intrebaria.txt");
 
         // Read the content of the file

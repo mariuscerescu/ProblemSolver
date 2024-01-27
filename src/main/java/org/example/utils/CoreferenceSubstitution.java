@@ -1,7 +1,7 @@
 package org.example.utils;
 
 import org.example.problemMetaData.BinPosRoRunner;
-import org.example.problemMetaData.MathWordProblem;
+import org.example.problemMetaData.ProblemMetaData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +16,13 @@ public class CoreferenceSubstitution {
     private String originalProblem;
     private ArrayList<Integer> tokenIndices;
 
-    public CoreferenceSubstitution(MathWordProblem mathWordProblem) {
-        tokens = mathWordProblem.getAllTokens();
-        pos = mathWordProblem.getAllPOSTags();
-        gender = mathWordProblem.getAllGenderTags();
-        number = mathWordProblem.getAllNumberTags();
-        type = mathWordProblem.getAllTypeTags();
-        this.originalProblem = mathWordProblem.problem;
+    public CoreferenceSubstitution(ProblemMetaData problemMetaData) {
+        tokens = problemMetaData.getAllTokens();
+        pos = problemMetaData.getAllPOSTags();
+        gender = problemMetaData.getAllGenderTags();
+        number = problemMetaData.getAllNumberTags();
+        type = problemMetaData.getAllTypeTags();
+        this.originalProblem = problemMetaData.problem;
         tokenIndices = getTokenIndices(originalProblem, tokens);
     }
 

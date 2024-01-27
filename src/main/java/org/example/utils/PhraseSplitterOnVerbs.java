@@ -1,7 +1,7 @@
 package org.example.utils;
 
 import org.example.problemMetaData.BinPosRoRunner;
-import org.example.problemMetaData.MathWordProblem;
+import org.example.problemMetaData.ProblemMetaData;
 import org.example.problemMetaData.Sentence;
 import org.example.problemMetaData.Word;
 import org.jetbrains.annotations.NotNull;
@@ -15,13 +15,13 @@ import java.util.List;
 
 public class PhraseSplitterOnVerbs {
 
-    private MathWordProblem mathWordProblem;
+    private ProblemMetaData problemMetaData;
 
     private String problem;
 
-    public PhraseSplitterOnVerbs(MathWordProblem mathWordProblem){
-        this.mathWordProblem = mathWordProblem;
-        this.problem = mathWordProblem.problem;
+    public PhraseSplitterOnVerbs(ProblemMetaData problemMetaData){
+        this.problemMetaData = problemMetaData;
+        this.problem = problemMetaData.problem;
     }
 
     public ArrayList<String> getSentences() {
@@ -46,8 +46,8 @@ public class PhraseSplitterOnVerbs {
 
         //Tokenization
         //POS Tags extraction
-        List<String> posTags = mathWordProblem.getAllPOSTags();
-        List<String> tokens = mathWordProblem.getAllTokens();
+        List<String> posTags = problemMetaData.getAllPOSTags();
+        List<String> tokens = problemMetaData.getAllTokens();
 
         ArrayList<Integer> tokenIndices = getTokenIndices(problem, tokens);
 
@@ -92,7 +92,7 @@ public class PhraseSplitterOnVerbs {
                     for (String junctionPoint : junctionPointsList) {
                         String junctionPointLower = junctionPoint.toLowerCase();
                         if (subStringToCheckJunctionPoint.startsWith(junctionPointLower)) {
-                            MathWordProblem jp = BinPosRoRunner.runTextAnalysis(junctionPoint);
+                            ProblemMetaData jp = BinPosRoRunner.runTextAnalysis(junctionPoint);
                             List<Sentence> jpSentences = jp.getSentences();
                             List<String> jpTokens = new ArrayList<>();
                             for(Sentence s : jpSentences){
