@@ -6,25 +6,40 @@ import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.MetaDataExtractor;
 import org.example.problemMetaData.ProblemMetaData;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
-public class Q1 {
+public class Q1 implements Question{
 
-    private final String question = "Ce se caută în această problemă?";
+    private final String question;
     private String userAnswer;
-    private MetaDataExtractor userAnswerMetaData;
+    private Problem problem;
 
-    public void start(Problem problem){
+    public Q1(Problem problem){
+        question = "Ce trebuie să aflăm în această problemă?";
+        this.problem = problem;
+    }
+
+    public void start(){
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(question);
+        while(true){
 
-        userAnswer = scanner.nextLine();
+            System.out.println(question);
+            System.out.print(":");
+            userAnswer = scanner.nextLine();
 
-        userAnswerMetaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis(userAnswer));
+            if(userAnswer.equals(problem.getQuestion())){
+
+            }
+
 
     }
-
 
 }

@@ -1,17 +1,3 @@
-1	La	la	ADP	Sp	_	0	_	_	_
-2	mare	mare	ADJ	Afpfsrn	Case=Dir|Definite=Ind|Gender=Fem|Number=Sing	3	_	_	_
-3	,	,	PUNCT	COMMA	_	7	_	_	_
-4	Mihaela	mihaela	NOUN	Np	Case=|Definite=Ind|Gender=Masc|Number=	9	_	_	_
-5	a	avea	AUX	Vaip3s	Mood=Ind|Number=Sing|Person=3|Tense=Pres	17	_	_	_
-6	adunat	aduna	VERB	Vmp	VerbForm=Par|Number=|Person=1|Tense=	19	_	_	_
-7	30	30	NUM	M	_	26	_	_	_
-8	de	de	ADP	Sp	_	29	_	_	_
-9	scoici	scoică	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	32	_	_	_
-10	și	și	CCONJ	Cc	_	39	_	_	_
-11	5	5	NUM	M	_	42	_	_	_
-12	pietricele	pietricea	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	44	_	_	_
-13	.	.	PUNCT	PERIOD	_	54	_	_	_
-
 1	Câte	câte	ADV	Rg	_	0	_	_	_
 2	obiecte	obiect	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	5	_	_	_
 3	formează	forma	VERB	Vmip3p	VerbForm=Ind|Number=Plur|Person=3|Tense=Pres	13	_	_	_

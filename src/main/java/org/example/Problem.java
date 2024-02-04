@@ -38,4 +38,24 @@ public class Problem {
         questionMetaData = new MetaDataExtractor((BinPosRoRunner.runTextAnalysis(question)));
     }
 
+    public MetaDataExtractor getProblemMetaData(){
+        return problemMetaData;
+    }
+
+    public MetaDataExtractor getQuestionMetaData(){
+        return questionMetaData;
+    }
+
+    public String getQuestion(){
+        return question;
+    }
+
+    public String getText(){
+        return text;
+    }
+
+    public List<String> getSentences(){
+        return sentences;
+    }
+
 }
