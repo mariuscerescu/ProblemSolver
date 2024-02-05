@@ -10,10 +10,9 @@ public class Test {
 
     public static void main(String[] args) {
 
-        MetaDataExtractor metaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis("Ce număr de specimene de stepă conține ierbarul? Câte plante de stepă sunt în ierbar?"));
+        MetaDataExtractor metaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei"));
 
         System.out.println(metaData.lemmaTags);
-
 
     }
 

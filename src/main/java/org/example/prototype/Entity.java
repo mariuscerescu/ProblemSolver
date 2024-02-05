@@ -1,6 +1,4 @@
-package org.example.rules;
-
-import java.util.ArrayList;
+package org.example.prototype;
 
 public class Entity {
     public String owner;

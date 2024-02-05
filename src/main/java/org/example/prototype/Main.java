@@ -1,4 +1,4 @@
-package org.example.rules;
+package org.example.prototype;
 
 import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.ProblemMetaData;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Rules {
+public class Main {
 
     private ArrayList<String> sentences;
     private ArrayList<ArrayList<String>> tokensPerSentence;
@@ -34,7 +34,7 @@ public class Rules {
     private String relation = null;
     private String patternExplanation = null;
 
-    public Rules(ProblemMetaData problemMetaData) throws IOException {
+    public Main(ProblemMetaData problemMetaData) throws IOException {
         question = QuestionFinder.getQuestion(problemMetaData.problem);
         PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(problemMetaData);
         this.sentences = splitter.getSentences();
@@ -352,7 +352,7 @@ public class Rules {
 
         problemMetaData = BinPosRoRunner.runTextAnalysis(result);
 
-        Rules rules = new Rules(problemMetaData);
+        Main rules = new Main(problemMetaData);
 
         rules.checkForEntities();
 
