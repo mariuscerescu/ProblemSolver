@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <POS_Output>
   <S id="1" offset="0">
-    <W LEMMA="câte" MSD="Rg" POS="ADVERB" id="1.1" offset="0">Câte</W>
-    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="pagină" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="1.2" offset="5">pagini</W>
-    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="1.3" offset="12">are</W>
-    <W Case="direct" Definiteness="yes" Gender="feminine" LEMMA="carte" MSD="Ncfsry" Number="singular" POS="NOUN" Type="common" id="1.4" offset="16">cartea</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="ana" MSD="Ncfsrn" Number="singular" POS="NOUN" Type="common" id="1.1" offset="0">Ana</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="1.2" offset="4">are</W>
+    <W EXTRA="NotInDict" LEMMA="8" MSD="M" POS="NUMERAL" id="1.3" offset="8">8</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="1.4" offset="10">nuci</W>
+    <W LEMMA="." MSD="PERIOD" id="1.5" offset="14">.</W>
+  </S>
+  <S id="2" offset="16">
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="ana" MSD="Ncfsrn" Number="singular" POS="NOUN" Type="common" id="2.1" offset="0">Ana</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="2.2" offset="4">are</W>
+    <W LEMMA="de" MSD="Sp" POS="ADPOSITION" id="2.3" offset="8">de</W>
+    <W EXTRA="NotInDict" LEMMA="2" MSD="M" POS="NUMERAL" id="2.4" offset="11">2</W>
+    <W Case="direct" Definiteness="no" Gender="feminine" LEMMA="oară" MSD="Ncfprn" Number="plural" POS="NOUN" Type="common" id="2.5" offset="13">ori</W>
+    <W LEMMA="mai" MSD="Rg" POS="ADVERB" id="2.6" offset="17">mai</W>
+    <W Case="direct" Gender="feminine" LEMMA="mult" MSD="Pi3fpr" Number="plural" POS="PRONOUN" Person="third" Type="indefinite" id="2.7" offset="21">multe</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="2.8" offset="27">nuci</W>
+    <W LEMMA="decât" MSD="Rg" POS="ADVERB" id="2.9" offset="32">decât</W>
+    <W LEMMA="maria" MSD="Np" POS="NOUN" Type="proper" id="2.10" offset="38">Maria</W>
+    <W LEMMA="." MSD="PERIOD" id="2.11" offset="43">.</W>
+  </S>
+  <S id="3" offset="61">
+    <W Case="direct" Gender="feminine" LEMMA="cât" MSD="Pi3fpr" Number="plural" POS="PRONOUN" Person="third" Type="indefinite" id="3.1" offset="0">Câte</W>
+    <W Case="direct" Definiteness="no" Gender="masculine" LEMMA="nuc" MSD="Ncmprn" Number="plural" POS="NOUN" Type="common" id="3.2" offset="5">nuci</W>
+    <W EXTRA="tranzitiv" LEMMA="avea" MSD="Vmip3s" Mood="indicative" Number="singular" POS="VERB" Person="third" Tense="present" Type="predicative" id="3.3" offset="10">are</W>
+    <W LEMMA="maria" MSD="Np" POS="NOUN" Type="proper" id="3.4" offset="14">Maria</W>
+    <W LEMMA="?" MSD="QUEST" id="3.5" offset="19">?</W>
   </S>
 </POS_Output>

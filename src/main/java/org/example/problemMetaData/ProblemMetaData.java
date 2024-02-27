@@ -70,7 +70,7 @@ public class ProblemMetaData {
         for(Sentence s : sentences){
             List<Word> words = s.getWords();
             for(Word w : words){
-                msdTags.add(w.getPos());
+                msdTags.add(w.getMsd());
             }
         }
 

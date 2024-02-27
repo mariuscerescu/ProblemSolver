@@ -1,6 +1,5 @@
 package org.example.questions;
 
-import org.checkerframework.checker.units.qual.A;
 import org.example.Problem;
 
 import java.util.ArrayList;
@@ -8,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Q3 implements Question{
+public class Q3ProblemDataPrompter implements Question{
 
     private final String question;
     private String userAnswer;
@@ -16,7 +15,7 @@ public class Q3 implements Question{
 
     private List<String> data;
 
-    public Q3(Problem problem){
+    public Q3ProblemDataPrompter(Problem problem){
         question = "Care sunt datele problemei?";
         this.problem = problem;
         getData();
@@ -66,14 +65,21 @@ public class Q3 implements Question{
         List<String> data = new ArrayList<>();
 
         ArrayList<String> posTags = problem.getProblemMetaData().posTags;
+        ArrayList<String> types = problem.getProblemMetaData().typeTags;
         ArrayList<String> tokens = problem.getProblemMetaData().tokens;
 
         for(int i = 0; i < posTags.size() - 2; i++){
 
-            if((posTags.get(i) != null && posTags.get(i + 1) != null && posTags.get(i + 2) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("ADPOSITION") && posTags.get(i + 2).equals("NOUN"))){
-                data.add(tokens.get(i) + " " + tokens.get(i + 1) + " " + tokens.get(i + 2));
-            }else if((posTags.get(i) != null && posTags.get(i + 1) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("NOUN"))){
-                data.add(tokens.get(i) + " " + tokens.get(i + 1));
+            if((posTags.get(i) != null && posTags.get(i + 1) != null && posTags.get(i + 2) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("ADPOSITION") && posTags.get(i + 2).equals("NOUN") && types.get(i + 2).equals("common"))){
+                String extractedData = tokens.get(i) + " " + tokens.get(i + 1) + " " + tokens.get(i + 2);
+                if(!data.contains(extractedData)){
+                    data.add(extractedData);
+                }
+            }else if((posTags.get(i) != null && posTags.get(i + 1) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("NOUN") && types.get(i + 1).equals("common"))){
+                String extractedData = tokens.get(i) + " " + tokens.get(i + 1);
+                if(!data.contains(extractedData)){
+                    data.add(extractedData);
+                }
             }
 
         }

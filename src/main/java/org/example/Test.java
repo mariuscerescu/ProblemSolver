@@ -4,15 +4,21 @@ import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.MetaDataExtractor;
 import org.example.problemMetaData.ProblemMetaData;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Test {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        MetaDataExtractor metaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis("La mare, Mihaela a adunat 30 de scoici și 5 pietricele. Câte obiecte formează colecția Mihaelei"));
+//        MetaDataExtractor metaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis("Maria are 5 mere si primește încă 3 de la Ana. Câte mere are Maria acum?"));
 
-        System.out.println(metaData.lemmaTags);
+
+        System.out.println(Arrays.toString(new File("src/main/java/org/example/solvers").list()));
 
     }
 

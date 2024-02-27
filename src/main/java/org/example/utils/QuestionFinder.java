@@ -156,7 +156,7 @@ public class QuestionFinder {
     public static void main(String[] args) {
         QuestionFinder qfinder = new QuestionFinder();
 
-        System.out.println(qfinder.getQuestion("Brandon a vândut 86 de geckos anul trecut. A vândut de două ori mai multe în anul precedent. Câte geckos a vândut Brandon în ultimii doi ani?"));
+        System.out.println(qfinder.getQuestion("Brandon calculați a vândut 86 de geckos anul trecut. A vândut de două ori mai multe în anul precedent. Câte geckos a vândut Brandon în ultimii doi ani"));
 
 
     }

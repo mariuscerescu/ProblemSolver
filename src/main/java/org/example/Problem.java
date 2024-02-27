@@ -3,6 +3,7 @@ package org.example;
 import org.example.problemMetaData.BinPosRoRunner;
 import org.example.problemMetaData.MetaDataExtractor;
 import org.example.problemMetaData.ProblemMetaData;
+import org.example.utils.PhraseSplitter;
 import org.example.utils.PhraseSplitterOnVerbs;
 import org.example.utils.QuestionFinder;
 
@@ -23,9 +24,11 @@ public class Problem {
 
         question = QuestionFinder.getQuestion(text);
 
-        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(BinPosRoRunner.runTextAnalysis(text));
+//        PhraseSplitterOnVerbs splitter = new PhraseSplitterOnVerbs(BinPosRoRunner.runTextAnalysis(text));
+        PhraseSplitter splitter = new PhraseSplitter();
 
-        this.sentences = splitter.getSentences();
+        this.sentences = splitter.getData(text);
+
 
         StringBuilder builder = new StringBuilder();
 
@@ -35,7 +38,7 @@ public class Problem {
 
         problemMetaData = new MetaDataExtractor(BinPosRoRunner.runTextAnalysis(builder.toString()));
 
-        questionMetaData = new MetaDataExtractor((BinPosRoRunner.runTextAnalysis(question)));
+//        questionMetaData = new MetaDataExtractor((BinPosRoRunner.runTextAnalysis(question)));
     }
 
     public MetaDataExtractor getProblemMetaData(){

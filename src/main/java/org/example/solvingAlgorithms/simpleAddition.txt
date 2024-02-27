@@ -1,0 +1,2 @@
+1) Deja ai aflat datele problemei, încearcă să formulezi ecuația.|Intodu Ecuația problemei:
+2) Acum calculează ecuația și scrie răspunsul.

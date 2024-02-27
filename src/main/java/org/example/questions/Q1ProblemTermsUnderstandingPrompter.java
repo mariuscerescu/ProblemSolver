@@ -8,14 +8,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Q1 implements Question{
+public class Q1ProblemTermsUnderstandingPrompter implements Question{
 
     private final String question;
     private String userAnswer;
 
     private Map<String, String> dictionary;
 
-    public Q1(){
+    public Q1ProblemTermsUnderstandingPrompter(){
         question = "Înțelegi toate cuvintele folosite în formularea problemei?";
         impDic();
     }

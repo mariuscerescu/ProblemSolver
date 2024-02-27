@@ -1,24 +1,16 @@
 package org.example;
 
-import org.example.questions.Q2;
-import org.example.questions.Q1;
-import org.example.questions.Q3;
+import org.example.questions.QuestionManager;
 
 public class  Main {
 
     public static void main(String[] args) {
 
-    Problem problem = new Problem("Alecu a citit 60 de pagini din cartea „Balcoane cu elefanți” și i-au mai rămas 39 de pagini. Câte pagini are cartea");
+        Problem problem = new Problem("Alex a economisit 7 dolari și apoi a primit alți 5 dolari de la bunicii săi pentru ziua lui. Câți dolari are Alex acum în total?");
 
-        System.out.println(problem.getText());
+        QuestionManager manager = new QuestionManager(problem);
 
-        Q1 q1 = new Q1();
-        Q2 q2 = new Q2(problem);
-        Q3 q3 = new Q3(problem);
-
-        q1.start();
-        q2.start();
-        q3.start();
+        manager.askQuestions();
     }
 
 }
