@@ -16,7 +16,7 @@ public class ClassifierManager {
     public String findClassification(){
         for(Classifier classifier : classifiers){
             String result = classifier.classifyProblem();
-            if(!result.equals(null)){
+            if(result != null){
                 return result;
             }
         }

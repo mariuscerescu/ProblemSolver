@@ -1,6 +1,9 @@
 package org.example.questions;
 
 import org.example.Problem;
+import org.example.classification.ClassifierManager;
+import org.example.solvers.Solver;
+import org.example.solvers.SolverManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +11,10 @@ import java.util.List;
 public class QuestionManager {
 
     private final List<Question> questions;
+    private Problem problem;
 
     public QuestionManager(Problem problem){
+        this.problem = problem;
         questions = new ArrayList<>();
         questions.add(new Q1ProblemTermsUnderstandingPrompter());
         questions.add(new Q2ProblemQuestionPrompter(problem));
@@ -18,9 +23,20 @@ public class QuestionManager {
     }
 
     public void askQuestions(){
-        for(Question question : questions){
-            question.start();
+        if(problemIsValid()){
+            for(Question question : questions){
+                question.start();
+            }
+        }else{
+            System.out.print("Îmi pare rău, nu pot rezolva această problemă.");
         }
+    }
+
+    public boolean problemIsValid(){
+        ClassifierManager classifierManager = new ClassifierManager(problem.getText());
+        String classification = classifierManager.findClassification();
+
+        return classification != null;
     }
 
 }

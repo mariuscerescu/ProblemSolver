@@ -12,7 +12,6 @@ public class Q1ProblemTermsUnderstandingPrompter implements Question{
 
     private final String question;
     private String userAnswer;
-
     private Map<String, String> dictionary;
 
     public Q1ProblemTermsUnderstandingPrompter(){
@@ -56,6 +55,7 @@ public class Q1ProblemTermsUnderstandingPrompter implements Question{
         Scanner scanner = new Scanner(System.in);
         Stemmer stemmer = new Stemmer();
 
+        System.out.println("Scrie \"ajutor\" dacă ai nevoie de un sfat.");
         System.out.print(question);
         System.out.println(" [da/nu]");
 

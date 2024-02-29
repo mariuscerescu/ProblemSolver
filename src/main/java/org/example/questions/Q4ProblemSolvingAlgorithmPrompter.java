@@ -19,12 +19,15 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
     private List<String> algorithm;
     private HashMap<String, List<String>> algorithms;
     private List<String> solutions;
+    private List<Queue<String>> advicesList;
+    private String classification;
 
     public Q4ProblemSolvingAlgorithmPrompter(Problem problem) {
         question = "Pe baza acestor informații, ai vreo idee despre cum am putea rezolva această problemă?";
         this.problem = problem;
         algorithm = new ArrayList<>();
         algorithms = new HashMap<>();
+        advicesList = new ArrayList<>();
 
         try {
             loadAlgorithms();
@@ -33,7 +36,7 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
         }
 
         ClassifierManager classifierManager = new ClassifierManager(problem.getText());
-        String classification = classifierManager.findClassification();
+        classification = classifierManager.findClassification();
 
         if(classification != null){
             algorithm = algorithms.get(classification);
@@ -43,7 +46,14 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
 
         SolverManager solverManager = new SolverManager(problem);
         Solver solver = solverManager.getSolvers().get(classification);
-        solutions = solver.getSolutions();
+
+        if(solver != null){
+            solutions = solver.getSolutions();
+        }
+
+        if(classification != null){
+            loadAdvices();
+        }
     }
 
     private void loadAlgorithms() throws IOException {
@@ -53,6 +63,47 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
         assert files != null;
         for(String file : files){
             algorithms.put(file.substring(0, file.length()-4), Files.readAllLines(Paths.get("src/main/java/org/example/solvingAlgorithms/" + file)));
+        }
+    }
+
+    private void loadAdvices(){
+        String folderPath = "src/main/java/org/example/guidance/q4Guidance/" + classification + "Guidance";
+        File q4GuidanceFolder = new File(folderPath);
+        String[] stepsFolder = q4GuidanceFolder.list();
+
+        StringBuilder builder = new StringBuilder();
+
+        assert stepsFolder != null;
+        for(String stepFolderName: stepsFolder){
+            String stepFolderPath = folderPath + "/" + stepFolderName;
+            File stepFolder = new File(stepFolderPath);
+            String[] files = stepFolder.list();
+            Queue<String> queue = new LinkedList<>();
+
+            for(String fileName : files){
+                String filePath = stepFolderPath + "/" + fileName;
+                builder.setLength(0);
+
+                try {
+                    List<String> adviceList = Files.readAllLines(Paths.get(filePath));
+
+                    for(int i = 0; i < adviceList.size(); i++){
+                        builder.append(adviceList.get(i));
+                        if(i < adviceList.size() - 1){
+                            builder.append("\n");
+                        }
+                    }
+
+                    queue.add(builder.toString());
+
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+            }
+
+            advicesList.add(queue);
+
         }
     }
 
@@ -86,6 +137,8 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
                 System.out.println("Nici o problemă! Vom folosi o abordare pas cu pas pentru a rezolva această problemă.");
                 for(int i = 0; i < algorithm.size(); i++){
 
+                    Queue<String> advicesQueue = advicesList.get(i);
+
                     String[] stepBreakdown = algorithm.get(i).split("\\|");
 
                     for(String subStep : stepBreakdown){
@@ -98,7 +151,13 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
                     System.out.print(":");
                     userAnswer = scanner.nextLine().toLowerCase().strip();
 
-                        if(userAnswer.equals(solutions.get(i))){
+                        if(userAnswer.equals("ajutor")){
+                            if(!advicesQueue.isEmpty()){
+                                System.out.println(advicesQueue.remove());
+                            }else{
+                                System.out.println("La moment nu te pot ajuta.");
+                            }
+                        }else if(userAnswer.equals(solutions.get(i))){
                             System.out.println("Corect!");
                             break;
                         }else{

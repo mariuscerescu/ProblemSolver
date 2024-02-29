@@ -1,0 +1,3 @@
+Privind spre problema dată, identifică toate cifrele sau informațiile concrete
+menționate și gândește-te la cum fiecare dintre acestea contribuie la rezolvarea
+întrebării tale. De exemplu, dacă ai '5 mere' și '7 banane', acestea sunt datele tale.

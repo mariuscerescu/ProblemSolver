@@ -26,7 +26,7 @@ public class SimpleAdditionClassifier implements Classifier {
 
     // Metoda pentru Pasul 3: Verifică dacă textul conține cuvinte cheie asociate cu adunarea
     public boolean containsKeywords(String text) {
-        String[] keywords = {"adună", "plus", "împreună", "total", "sumează", "primește"};
+        String[] keywords = {"adună", "plus", "împreună", "total", "sumează", "primește", "adunat"};
         for (String keyword : keywords) {
             if (text.contains(keyword)) {
                 return true;

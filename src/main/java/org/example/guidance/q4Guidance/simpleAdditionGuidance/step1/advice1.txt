@@ -1,0 +1,3 @@
+O ecuație este o afirmație matematică care arată că două expresii sunt egale,
+folosind simbolul „=”. Notăm cu „x” necunoscuta, care va reprezenta prima expresie,
+iar a doua expresie va fi reprezentată de suma numerelor din problemă. Exemplu: "2 + 3 = x".
