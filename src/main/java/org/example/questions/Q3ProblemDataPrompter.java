@@ -54,6 +54,10 @@ public class Q3ProblemDataPrompter implements Question{
 
     public void start() {
 
+        if(data.isEmpty()){
+            return;
+        }
+
         int[] foundData = new int[data.size()];
         
         System.out.println(data);
@@ -105,7 +109,7 @@ public class Q3ProblemDataPrompter implements Question{
         ArrayList<String> types = problem.getProblemMetaData().typeTags;
         ArrayList<String> tokens = problem.getProblemMetaData().tokens;
 
-        for(int i = 0; i < posTags.size() - 2; i++){
+        for(int i = 0; i < tokens.size() - 2; i++){
 
             if((posTags.get(i) != null && posTags.get(i + 1) != null && posTags.get(i + 2) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("ADPOSITION") && posTags.get(i + 2).equals("NOUN") && types.get(i + 2).equals("common"))){
                 String extractedData = tokens.get(i) + " " + tokens.get(i + 1) + " " + tokens.get(i + 2);

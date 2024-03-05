@@ -13,6 +13,7 @@ public class SolverManager {
     public SolverManager(Problem problem){
         solvers = new HashMap<>();
         solvers.put("simpleAddition", new SimpleAdditionSolver(problem));
+        solvers.put("simpleDeletion", new SimpleDeletionSolver(problem));
     }
 
     public Map<String, Solver> getSolvers(){

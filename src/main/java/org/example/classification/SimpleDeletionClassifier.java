@@ -3,11 +3,11 @@ package org.example.classification;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SimpleAdditionClassifier implements Classifier {
+public class SimpleDeletionClassifier implements Classifier {
 
     private String problem;
 
-    public SimpleAdditionClassifier(String problem){
+    public SimpleDeletionClassifier(String problem){
         this.problem = problem;
     }
 
@@ -18,7 +18,7 @@ public class SimpleAdditionClassifier implements Classifier {
 
         // Pasul 3: Căutarea cuvintelor cheie și Pasul 4: Extragerea și analiza numerelor
         if (containsKeywords(processedProblem) && countNumbers(processedProblem) >= 2) {
-            return "simpleAddition";
+            return "simpleDeletion";
         } else {
             return null;
         }
@@ -26,7 +26,7 @@ public class SimpleAdditionClassifier implements Classifier {
 
     // Metoda pentru Pasul 3: Verifică dacă textul conține cuvinte cheie asociate cu adunarea
     public boolean containsKeywords(String text) {
-        String[] keywords = {"transferă", "aduc", "cumpărat", "adaugi", "primește", "adaugă", "adună", "plus", "împreună", "total", "sumează", "primești", "adunat"};
+        String[] keywords = {"absenți", "mănânci", "rămâne", "mută"};
         for (String keyword : keywords) {
             if (text.contains(keyword)) {
                 return true;
@@ -48,7 +48,7 @@ public class SimpleAdditionClassifier implements Classifier {
     public static void main(String[] args) {
 
         // Exemplu de problemă pentru clasificare
-        String problem = "Maria are 5 mere si primește încă 3 de la Ana. Câte mere are Maria acum?";
+        String problem = "Dacă ai 15 mere și mănânci 7 dintre ele, câte mere îți rămân?";
 
         ClassifierManager manager = new ClassifierManager(problem);
 

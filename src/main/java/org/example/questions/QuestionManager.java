@@ -19,6 +19,7 @@ public class QuestionManager {
         questions.add(new Q1ProblemTermsUnderstandingPrompter());
         questions.add(new Q2ProblemQuestionPrompter(problem));
         questions.add(new Q3ProblemDataPrompter(problem));
+        questions.add(new Summarizer(problem));
         questions.add(new Q4ProblemSolvingAlgorithmPrompter(problem));
     }
 

@@ -12,12 +12,20 @@ public class Q2ProblemQuestionPrompter implements Question {
 
     private final String question;
     private String userAnswer;
+    private String processedProblemQuestion;
     private Problem problem;
     private Queue<String> advices;
 
     public Q2ProblemQuestionPrompter(Problem problem) {
         question = "Ce trebuie să aflăm în această problemă?";
         this.problem = problem;
+        String problemQuestion = problem.getQuestion();
+        if(problemQuestion != null){
+            processedProblemQuestion = problemQuestion.toLowerCase().substring(0, problemQuestion.length() - 2);
+        }else{
+            processedProblemQuestion = null;
+        }
+
         loadAdvices();
     }
 
@@ -51,8 +59,14 @@ public class Q2ProblemQuestionPrompter implements Question {
 
     public void start() {
 
+        if(processedProblemQuestion == null){
+            return;
+        }
+
         Scanner scanner = new Scanner(System.in);
         System.out.println(question);
+
+        System.out.println(processedProblemQuestion);
 
         while (true) {
 
@@ -65,7 +79,7 @@ public class Q2ProblemQuestionPrompter implements Question {
                 }else{
                     System.out.println("La moment nu te pot ajuta.");
                 }
-            }else if (userAnswer.contains(problem.getQuestion().toLowerCase())) {
+            }else if (userAnswer.contains(processedProblemQuestion)) {
                 System.out.println("Corect! Acesta este răspunsul, să continuăm rezolvarea.");
                 break;
             }else{

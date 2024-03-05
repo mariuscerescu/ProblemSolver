@@ -11,6 +11,7 @@ public class ClassifierManager {
     public ClassifierManager(String problem){
         classifiers = new ArrayList<>();
         classifiers.add(new SimpleAdditionClassifier(problem));
+        classifiers.add(new SimpleDeletionClassifier(problem));
     }
 
     public String findClassification(){
