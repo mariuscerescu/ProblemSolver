@@ -1,7 +1,2 @@
-package org.example.questions;
-
-public interface Question {
-
-    void start();
-
+package org.example.questions;public class Question {
 }

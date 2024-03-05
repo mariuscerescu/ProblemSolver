@@ -1,6 +1,2 @@
-package org.example.classification;
-
-public interface Classifier {
-
-    String classifyProblem();
+package org.example.classification;public class Classifier {
 }

@@ -1,7 +1,2 @@
-package org.example.solvers;
-
-import java.util.List;
-
-public interface Solver {
-    public List<String> getSolutions();
+package org.example.solvers;public class Solver {
 }
