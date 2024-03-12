@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.*;
 
-public class Q1ProblemTermsUnderstandingPrompter implements Question{
+public class Q1ProblemTermsUnderstandingPrompter extends Question{
 
     private final String question;
     private String userAnswer;

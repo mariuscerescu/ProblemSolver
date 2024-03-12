@@ -1,6 +1,7 @@
 package org.example.questions;
 
 import org.example.Problem;
+import org.example.utils.DataFinder;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,23 +9,21 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Q3ProblemDataPrompter implements Question{
+public class Q3ProblemDataPrompter extends Question{
 
     private final String question;
-    private String userAnswer;
-    private Problem problem;
-    private List<String> data;
-    private Queue<String> advices;
+    private final List<String> data;
+    private List<String> advices;
 
     public Q3ProblemDataPrompter(Problem problem){
         question = "Care sunt datele problemei?";
-        this.problem = problem;
-        getData();
+        DataFinder dataFinder = new DataFinder(problem);
+        data = dataFinder.getData();
         loadAdvices();
     }
 
     private void loadAdvices(){
-        advices = new LinkedList<>();
+        advices = new ArrayList<>();
         String folderPath = "src/main/java/org/example/guidance/q3Guidance";
         File folder = new File(folderPath);
         String[] files = folder.list();
@@ -69,11 +68,12 @@ public class Q3ProblemDataPrompter implements Question{
 
         while(true){
             System.out.print(":");
-            userAnswer = scanner.nextLine().toLowerCase().strip();
+            String userAnswer = scanner.nextLine().toLowerCase().strip();
 
             if(userAnswer.equals("ajutor")){
                 if(!advices.isEmpty()){
-                    System.out.println(advices.remove());
+                    System.out.println(advices.get(0));
+                    advices.remove(0);
                 }else{
                     System.out.println("La moment nu te pot ajuta.");
                 }
@@ -102,30 +102,4 @@ public class Q3ProblemDataPrompter implements Question{
 
     }
 
-    private void getData(){
-        List<String> data = new ArrayList<>();
-
-        ArrayList<String> posTags = problem.getProblemMetaData().posTags;
-        ArrayList<String> types = problem.getProblemMetaData().typeTags;
-        ArrayList<String> tokens = problem.getProblemMetaData().tokens;
-
-        for(int i = 0; i < tokens.size() - 2; i++){
-
-            if((posTags.get(i) != null && posTags.get(i + 1) != null && posTags.get(i + 2) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("ADPOSITION") && posTags.get(i + 2).equals("NOUN") && types.get(i + 2).equals("common"))){
-                String extractedData = tokens.get(i) + " " + tokens.get(i + 1) + " " + tokens.get(i + 2);
-                if(!data.contains(extractedData)){
-                    data.add(extractedData);
-                }
-            }else if((posTags.get(i) != null && posTags.get(i + 1) != null) && (posTags.get(i).equals("NUMERAL") && posTags.get(i + 1).equals("NOUN") && types.get(i + 1).equals("common"))){
-                String extractedData = tokens.get(i) + " " + tokens.get(i + 1);
-                if(!data.contains(extractedData)){
-                    data.add(extractedData);
-                }
-            }
-
-        }
-
-        this.data = data;
-
-    }
 }

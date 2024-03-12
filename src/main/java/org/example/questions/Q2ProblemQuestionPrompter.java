@@ -8,20 +8,20 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Q2ProblemQuestionPrompter implements Question {
+public class Q2ProblemQuestionPrompter extends Question {
 
     private final String question;
     private String userAnswer;
     private String processedProblemQuestion;
     private Problem problem;
-    private Queue<String> advices;
+    private List<String> advices;
 
     public Q2ProblemQuestionPrompter(Problem problem) {
         question = "Ce trebuie să aflăm în această problemă?";
         this.problem = problem;
         String problemQuestion = problem.getQuestion();
         if(problemQuestion != null){
-            processedProblemQuestion = problemQuestion.toLowerCase().substring(0, problemQuestion.length() - 2);
+            processedProblemQuestion = problemQuestion.toLowerCase().substring(0, problemQuestion.length() - 1);
         }else{
             processedProblemQuestion = null;
         }
@@ -30,7 +30,7 @@ public class Q2ProblemQuestionPrompter implements Question {
     }
 
     private void loadAdvices(){
-        advices = new LinkedList<>();
+        advices = new ArrayList<>();
         String folderPath = "src/main/java/org/example/guidance/q2Guidance";
         File folder = new File(folderPath);
         String[] files = folder.list();
@@ -75,7 +75,8 @@ public class Q2ProblemQuestionPrompter implements Question {
 
             if(userAnswer.equals("ajutor")){
                 if(!advices.isEmpty()){
-                    System.out.println(advices.remove());
+                    System.out.println(advices.get(0));
+                    advices.remove(0);
                 }else{
                     System.out.println("La moment nu te pot ajuta.");
                 }
@@ -85,9 +86,6 @@ public class Q2ProblemQuestionPrompter implements Question {
             }else{
                 System.out.println("Mai încearcă.");
             }
-
-
         }
-
     }
 }

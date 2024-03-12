@@ -6,7 +6,7 @@ import org.example.Problem;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleDeletionSolver implements Solver{
+public class SimpleDeletionSolver extends Solver{
 
     private Problem problem;
     private List<String> solutions;

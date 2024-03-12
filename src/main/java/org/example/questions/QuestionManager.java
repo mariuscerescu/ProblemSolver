@@ -2,8 +2,6 @@ package org.example.questions;
 
 import org.example.Problem;
 import org.example.classification.ClassifierManager;
-import org.example.solvers.Solver;
-import org.example.solvers.SolverManager;
 
 import java.util.ArrayList;
 import java.util.List;

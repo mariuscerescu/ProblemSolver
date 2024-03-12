@@ -3,7 +3,7 @@ package org.example.classification;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SimpleAdditionClassifier implements Classifier {
+public class SimpleAdditionClassifier extends Classifier {
 
     private String problem;
 

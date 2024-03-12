@@ -27,7 +27,9 @@ public class BinPosRoRunner {
             }
 
             try {
-                ProcessBuilder processBuilder = new ProcessBuilder("D:\\Work\\ProblemSolver\\src\\main\\java\\org\\example\\problemMetaData\\bin_PosRo\\start tagging inputs - mixedDiacr.bat");
+                File absolutePath = new File("");
+                String batFileSource = "src/main/java/org/example/problemMetaData/bin_PosRo/start tagging inputs - mixedDiacr.bat";
+                ProcessBuilder processBuilder = new ProcessBuilder(absolutePath.getAbsolutePath() + "/" + batFileSource);
                 processBuilder.directory(new File("src/main/java/org/example/problemMetaData/bin_PosRo"));
                 processBuilder.redirectErrorStream(true);
 

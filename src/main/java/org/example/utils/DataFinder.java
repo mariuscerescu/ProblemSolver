@@ -1,46 +1,19 @@
-package org.example.questions;
+package org.example.utils;
 
 import org.example.Problem;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Summarizer extends Question{
+public class DataFinder {
 
-    private String processedQuestion;
-    private List<String> data;
-    private Problem problem;
+    private final Problem problem;
 
-    public Summarizer(Problem problem){
+    public DataFinder(Problem problem){
         this.problem = problem;
-            String question = problem.getQuestion();
-            if(question != null){
-                processedQuestion = question.toLowerCase().substring(0, problem.getQuestion().length()-1);
-            }else{
-                processedQuestion = null;
-            }
-           getData();
     }
 
-    @Override
-    public void start() {
-
-        if(data.isEmpty() || processedQuestion == null){
-            return;
-        }
-
-        System.out.print("Deci noi cunoaștem că trebuie să aflăm " + processedQuestion + " și că avem ");
-        for(int i = 0; i < data.size(); i++){
-            System.out.print(data.get(i));
-            if(i < data.size() - 1){
-                System.out.print(" și ");
-            }
-        }
-
-        System.out.println(".");
-    }
-
-    private void getData(){
+    public List<String> getData(){
         List<String> data = new ArrayList<>();
 
         ArrayList<String> posTags = problem.getProblemMetaData().posTags;
@@ -63,7 +36,8 @@ public class Summarizer extends Question{
 
         }
 
-        this.data = data;
+        return data;
 
     }
+
 }

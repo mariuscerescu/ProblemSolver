@@ -1,2 +1,5 @@
-package org.example.classification;public class Classifier {
+package org.example.classification;
+
+public abstract class Classifier {
+    abstract String classifyProblem();
 }

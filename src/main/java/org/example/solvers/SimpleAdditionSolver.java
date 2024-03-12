@@ -7,7 +7,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SimpleAdditionSolver implements Solver{
+public class SimpleAdditionSolver extends Solver{
 
     private Problem problem;
     private List<String> solutions;

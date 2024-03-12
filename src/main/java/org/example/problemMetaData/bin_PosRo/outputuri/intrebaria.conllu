@@ -1,15 +1,19 @@
 1	S	sud	PUNCT	Y	_	0	_	_	_
 2	:	:	PUNCT	COLON	_	1	_	_	_
-3	Dacă	dac	NOUN	Npfsry	Case=Dir|Definite=Def|Gender=Fem|Number=Sing	3	_	_	_
-4	ai	avea	AUX	Vaip2s	Mood=Ind|Number=Sing|Person=2|Tense=Pres	8	_	_	_
-5	3	3	NUM	M	_	11	_	_	_
-6	mere	măr	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	13	_	_	_
-7	și	și	CCONJ	Cc	_	18	_	_	_
-8	primești	primi	VERB	Vmip2s	VerbForm=Ind|Number=Sing|Person=2|Tense=Pres	21	_	_	_
-9	încă	încă	ADV	Rg	_	30	_	_	_
-10	2	2	NUM	M	_	35	_	_	_
-11	mere	măr	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	37	_	_	_
-12	de la	de~la	ADP	Sp	_	42	_	_	_
-13	un	un	DET	Timsr	Case=Dir|Gender=Masc|Number=Sing|Person=1	48	_	_	_
-14	prieten	prieten	NOUN	Ncmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	51	_	_	_
+3	Da	Da	NOUN	Npfpon	Case=Obl|Definite=Ind|Gender=Fem|Number=Plur	3	_	_	_
+4	dă	da	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	6	_	_	_
+5	ai	avea	AUX	Vaip2s	Mood=Ind|Number=Sing|Person=2|Tense=Pres	9	_	_	_
+6	3asd	3asd	VERB	Vmip3s	VerbForm=Ind|Number=Sing|Person=3|Tense=Pres	12	_	_	_
+7	as	as	NOUN	Ncmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	17	_	_	_
+8	das	das	ADV	Rg	_	20	_	_	_
+9	d	d	NOUN	Ncmprn	Case=Dir|Definite=Ind|Gender=Masc|Number=Plur	24	_	_	_
+10	mere	măr	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	26	_	_	_
+11	și	și	CCONJ	Cc	_	31	_	_	_
+12	primești	primi	VERB	Vmip2s	VerbForm=Ind|Number=Sing|Person=2|Tense=Pres	34	_	_	_
+13	încă	încă	ADV	Rg	_	43	_	_	_
+14	2	2	NUM	M	_	48	_	_	_
+15	mere	măr	NOUN	Ncfprn	Case=Dir|Definite=Ind|Gender=Fem|Number=Plur	50	_	_	_
+16	de la	de~la	ADP	Sp	_	55	_	_	_
+17	un	un	DET	Timsr	Case=Dir|Gender=Masc|Number=Sing|Person=1	61	_	_	_
+18	prieten	prieten	NOUN	Ncmsrn	Case=Dir|Definite=Ind|Gender=Masc|Number=Sing	64	_	_	_
 

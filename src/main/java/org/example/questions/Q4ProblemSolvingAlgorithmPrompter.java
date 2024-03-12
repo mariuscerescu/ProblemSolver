@@ -6,12 +6,11 @@ import org.example.solvers.Solver;
 import org.example.solvers.SolverManager;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
-public class Q4ProblemSolvingAlgorithmPrompter implements Question{
+public class Q4ProblemSolvingAlgorithmPrompter extends Question{
 
     private final String question;
     private String userAnswer;
@@ -19,7 +18,7 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
     private List<String> algorithm;
     private HashMap<String, List<String>> algorithms;
     private List<String> solutions;
-    private List<Queue<String>> advicesList;
+    private List<List<String>> advicesList;
     private String classification;
 
     public Q4ProblemSolvingAlgorithmPrompter(Problem problem) {
@@ -78,7 +77,7 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
             String stepFolderPath = folderPath + "/" + stepFolderName;
             File stepFolder = new File(stepFolderPath);
             String[] files = stepFolder.list();
-            Queue<String> queue = new LinkedList<>();
+            List<String> queue = new ArrayList<>();
 
             for(String fileName : files){
                 String filePath = stepFolderPath + "/" + fileName;
@@ -137,7 +136,7 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
                 System.out.println("Nici o problemă! Vom folosi o abordare pas cu pas pentru a rezolva această problemă.");
                 for(int i = 0; i < algorithm.size(); i++){
 
-                    Queue<String> advicesQueue = advicesList.get(i);
+                    List<String> advicesQueue = advicesList.get(i);
 
                     String[] stepBreakdown = algorithm.get(i).split("\\|");
 
@@ -153,7 +152,8 @@ public class Q4ProblemSolvingAlgorithmPrompter implements Question{
 
                         if(userAnswer.equals("ajutor")){
                             if(!advicesQueue.isEmpty()){
-                                System.out.println(advicesQueue.remove());
+                                System.out.println(advicesQueue.get(0));
+                                advicesQueue.remove(0);
                             }else{
                                 System.out.println("La moment nu te pot ajuta.");
                             }
