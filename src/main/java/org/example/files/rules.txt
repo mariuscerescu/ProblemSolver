@@ -1,4 +1,0 @@
-cu\s+(\d+).*mai\s+(mult|multe|mulți)\b ---- x + ---- Exemplu: cu 4 mere mai mult Explicatie: expresia „cu n mai mult” presupune operația de adunare
-cu\s+(\d+).*mai\s+(puțin|puține|puțini)\b ---- x - ---- Exemplu: cu 4 mere mai puțin Explicatie: expresia „cu n mai puțin” presupune operația de scădere
-de\s+(\d+).*mai\s+(mult|multe|mulți)\b ---- x * ---- Exemplu: de 10 ori mai mult Explicatie: expresia „de n ori mai mult” presupune operația de înmulțire
-de\s+(\d+).*mai\s+(puțini|puține|puțini)\b ---- x / ---- Exemplu: de 10 ori mai puțini Explicatie: expresia „de n ori mai puțin” presupune operația de împărțire

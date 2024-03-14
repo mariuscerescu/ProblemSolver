@@ -65,7 +65,7 @@ public class PhraseSplitter {
 
                 String subString = problem.substring(startIndex, endIndex);
 
-                if(nrOfTokens > 7 || sentences.isEmpty() || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!")){
+                if(nrOfTokens > 7 || sentences.size() == 0 || tokens.get(lastEndIndex).equals(".") || tokens.get(lastEndIndex).equals("!")){
                     sentences.add(subString);
                 }else{
                         String lastSent = sentences.get(sentences.size() - 1);
@@ -111,7 +111,7 @@ public class PhraseSplitter {
 
         }
 
-        if(sentences.isEmpty()){
+        if(sentences.size() == 0){
             sentences.add(problem.substring(startIndex, endIndex));
         }
         return sentences;
