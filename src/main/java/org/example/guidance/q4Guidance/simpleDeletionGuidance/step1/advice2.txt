@@ -1,0 +1,2 @@
+Analizează relațiile dintre datele problemei pentru a construi
+expresiile ecuației. Întreabă-te cum se leagă cifrele și informațiile între ele.

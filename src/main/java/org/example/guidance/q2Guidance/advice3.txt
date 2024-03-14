@@ -1,0 +1,2 @@
+Identifică cuvintele cheie din problemă care sugerează
+acțiunea cerută(de exemplu, "cât este", "câte", "care este").

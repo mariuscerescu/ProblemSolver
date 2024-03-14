@@ -1,0 +1,3 @@
+Dacă problema implică mai multe etape sau operații, identifică și notează
+separat datele relevante pentru fiecare parte a problemei. Acest lucru te
+poate ajuta să menții claritatea și să eviți confuziile.

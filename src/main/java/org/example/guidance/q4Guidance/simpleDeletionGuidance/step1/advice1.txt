@@ -1,3 +1,2 @@
-O ecuație este o afirmație matematică care arată că două expresii sunt egale,
-folosind simbolul „=”. Notăm cu „x” necunoscuta, care va reprezenta a doua expresie,
-iar prima expresie va fi reprezentată de diferența numerelor din problemă. Exemplu: "3 - 2 = x".
+Identifică necunoscuta problemei și alege variabila x
+pentru a o reprezenta. Gândește-te la ce se cere să afli.

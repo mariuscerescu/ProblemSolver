@@ -1,6 +1,2 @@
-Pentru a înțelege mai bine ce se cere în problema dată, este important să identifici
-enunțul problemei, care este sub forma unei întrebări. Citește
-cu atenție problema și încearcă să identifici scopul principal. De exemplu, dacă problema
-vorbește despre calcularea unei distanțe, întrebarea ar putea fi 'Ce distanță trebuie
-să calculez?'. Dacă este vorba despre compararea cantităților, întrebarea ar putea fi
-'Care cantitate este mai mare sau cum se compară acestea?'.
+Asigură-te că ai înțeles corect ce se cere în problemă.
+Este util să reiei enunțul și să identifici exact obiectivul problemei.

@@ -1,0 +1,2 @@
+Verifică dacă ecuația reflectă corect întrebarea din problemă.
+Ecuația trebuie să modeleze situația descrisă în enunț.

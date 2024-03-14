@@ -1,0 +1,3 @@
+Dacă te blochezi, încearcă să simplifici problema gândindu-te la un
+exemplu mai simplu cu aceeași structură. Acest lucru te poate ajuta
+să înțelegi cum să formulezi ecuația.

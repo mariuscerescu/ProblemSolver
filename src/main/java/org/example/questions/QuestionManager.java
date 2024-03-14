@@ -9,7 +9,7 @@ import java.util.List;
 public class QuestionManager {
 
     private final List<Question> questions;
-    private Problem problem;
+    private final Problem problem;
 
     public QuestionManager(Problem problem){
         this.problem = problem;
@@ -24,7 +24,7 @@ public class QuestionManager {
     public void askQuestions(){
         if(problemIsValid()){
             for(Question question : questions){
-                question.start();
+                question.askQuestion();
             }
         }else{
             System.out.print("Îmi pare rău, nu pot rezolva această problemă.");

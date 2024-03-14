@@ -1,0 +1,2 @@
+Folosește simboluri matematice adecvate (+, -, *, /) pentru a arăta
+operațiile dintre elementele date și necunoscuta.

@@ -1,0 +1,2 @@
+Împarte problema în părți mai mici dacă este prea complexă și
+caută întrebarea specifică pentru fiecare parte.

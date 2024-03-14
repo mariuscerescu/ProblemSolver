@@ -23,7 +23,7 @@ public class Summarizer extends Question{
     }
 
     @Override
-    public void start() {
+    public void askQuestion() {
 
         if(data.isEmpty() || processedQuestion == null){
             return;

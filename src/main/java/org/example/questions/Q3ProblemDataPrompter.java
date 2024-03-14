@@ -16,7 +16,12 @@ public class Q3ProblemDataPrompter extends Question{
     private List<String> advices;
 
     public Q3ProblemDataPrompter(Problem problem){
-        question = "Care sunt datele problemei?";
+        question = """
+                Identifică datele problemei, acestea sunt toate cifrele sau informațiile concrete
+                menționate și gândește-te la cum fiecare dintre acestea contribuie la rezolvarea
+                întrebării tale. De exemplu, dacă ai '5 mere' și '7 banane', acestea sunt datele tale.
+                Introdu toate datele pe rând.""";
+
         DataFinder dataFinder = new DataFinder(problem);
         data = dataFinder.getData();
         loadAdvices();
@@ -51,7 +56,7 @@ public class Q3ProblemDataPrompter extends Question{
     }
 
 
-    public void start() {
+    public void askQuestion() {
 
         if(data.isEmpty()){
             return;
@@ -64,7 +69,6 @@ public class Q3ProblemDataPrompter extends Question{
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(question);
-        System.out.println("Introdu toate datele pe rând.");
 
         while(true){
             System.out.print(":");
@@ -77,6 +81,9 @@ public class Q3ProblemDataPrompter extends Question{
                 }else{
                     System.out.println("La moment nu te pot ajuta.");
                 }
+            }else if(userAnswer.contains("ce înseamnă")){
+                String term = userAnswer.split(" ")[2];
+                System.out.println(Q1ProblemTermsUnderstandingPrompter.getDefinition(term));
             }else if(data.contains(userAnswer)){
 
                 if(foundData[data.indexOf(userAnswer)] == 0){
@@ -96,7 +103,13 @@ public class Q3ProblemDataPrompter extends Question{
                 }
 
             }else{
-                System.out.println("Ai introdus un răspuns greșit. Mai încearcă!");
+//                System.out.println("Ai introdus un răspuns greșit. Mai încearcă!");
+                if(!advices.isEmpty()){
+                    System.out.println(advices.get(0));
+                    advices.remove(0);
+                }else{
+                    System.out.println("Mai încearcă.");
+                }
             }
         }
 

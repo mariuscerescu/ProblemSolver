@@ -1,6 +1,8 @@
 package org.example.questions;
 
 import org.example.utils.Stemmer;
+import org.example.utils.TextNormalization;
+import org.junit.internal.runners.statements.RunAfters;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,22 +12,18 @@ import java.util.*;
 
 public class Q1ProblemTermsUnderstandingPrompter extends Question{
 
-    private final String question;
-    private String userAnswer;
-    private Map<String, String> dictionary;
+    private static Map<String, String> dictionary;
+    private static Stemmer stemmer = new Stemmer();
 
     public Q1ProblemTermsUnderstandingPrompter(){
-        question = "Înțelegi toate cuvintele folosite în formularea problemei?";
         impDic();
     }
 
     private void impDic(){
 
-        Stemmer stemmer = new Stemmer();
-
         Map<String, String> dic = new HashMap<>();
 
-        BufferedReader reader = null;
+        BufferedReader reader;
         try {
             reader = new BufferedReader(new FileReader("src/main/java/org/example/files/dictionary.txt"));
         } catch (FileNotFoundException e) {
@@ -51,22 +49,26 @@ public class Q1ProblemTermsUnderstandingPrompter extends Question{
 
     }
 
-    public void start(){
-        Scanner scanner = new Scanner(System.in);
-        Stemmer stemmer = new Stemmer();
+    @Override
+    public void askQuestion() {
+        String userAnswer;
+        String question = """
+                    Citește cu atenție textul problemei și asigură-te că înțelegi semnificația fiecărui cuvânt. 
+                    La această etapă, îți sunt clare toate cuvintele utilizate? [da/nu]""";
 
-        System.out.println("Scrie \"ajutor\" dacă ai nevoie de un sfat.");
-        System.out.print(question);
-        System.out.println(" [da/nu]");
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Dacă la oricare etapă de rezolvare ai nevoie de ghidare scrie \"Ajutor\" pentru a obține un sfat.\n");
+        System.out.println(question);
 
         System.out.print(":");
-        userAnswer = scanner.nextLine();
+        userAnswer = TextNormalization.getProcessedText(scanner.nextLine());
 
         while(!userAnswer.equals("da") && !userAnswer.equals("nu")){
             System.out.println("Nu am înțeles ce ai introdus.");
             System.out.println("Introdu din nou.");
             System.out.print(":");
-            userAnswer = scanner.nextLine();
+            userAnswer = TextNormalization.getProcessedText(scanner.nextLine());
         }
 
         if(userAnswer.equals("da")){
@@ -79,7 +81,7 @@ public class Q1ProblemTermsUnderstandingPrompter extends Question{
 
         while(true){
             System.out.print(":");
-            userAnswer = scanner.nextLine();
+            userAnswer = TextNormalization.getProcessedText(scanner.nextLine());
 
             if(userAnswer.equals("gata")){
                 System.out.println("Super, atunci mergem mai departe.");
@@ -98,7 +100,16 @@ public class Q1ProblemTermsUnderstandingPrompter extends Question{
             }
         }
 
+        System.out.println("În continuare, dacă pe parcursul procesului de rezolvare nu înțelegi un anumit termen, poți cere explicația lui.\n" +
+                "Pentru acest lucru trebuie să formulezi expresia \"Ce înseamnă x\", unde x este termenul pe care lu îl înțelegi.");
+    }
 
+    public static String getDefinition(String term){
+        String termStem = stemmer.getStem(term);
+        if(dictionary.containsKey(termStem)){
+            return dictionary.get(termStem);
+        }
+        return null;
     }
 
 }

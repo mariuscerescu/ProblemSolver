@@ -1,0 +1,2 @@
+Revizuiește modul în care ai aplicat proprietățile operațiilor sau relațiile dintre numere.
+O interpretare greșită a relațiilor poate duce la erori în calcul.
